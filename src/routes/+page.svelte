@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { BookText, Brain, ChevronRight } from '@lucide/svelte';
-	import { Button } from '#lib/components/ui/button/index.ts';
+	import * as Footer from '#lib/footer/index.ts';
 	import * as Item from '#lib/components/ui/item/index.ts';
 	import GitHub from '#lib/GitHub.svelte';
 	import type { PageProps } from './$types';
@@ -19,7 +19,7 @@
 		</p>
 	</header>
 
-	<nav class="flex items-center justify-between gap-4">
+	<nav>
 		<div class="grid w-fit auto-cols-fr gap-4 sm:grid-flow-col">
 			<Item.Root variant="outline">
 				{#snippet child({ props })}
@@ -43,15 +43,11 @@
 				<Item.Actions><ChevronRight class="size-4" /></Item.Actions>
 			</Item.Root>
 		</div>
-
-		<Button
-			variant="ghost"
-			size="icon-lg"
-			href="https://github.com/toa-io/toa"
-			aria-label="Toa on GitHub"
-			class="no-underline"
-		>
-			<GitHub />
-		</Button>
 	</nav>
 </main>
+
+<Footer.Center>
+	<a href="https://github.com/toa-io/toa" aria-label="Toa on GitHub" class="text-muted-foreground">
+		<GitHub />
+	</a>
+</Footer.Center>
