@@ -1,4 +1,5 @@
 import intro from '$docs/0.intro.md?raw';
+import { anchors } from '#lib/anchors.ts';
 import { keywords } from '#lib/keywords.ts';
 import type { LayoutServerLoad } from './$types';
 
@@ -10,11 +11,7 @@ const chapters = Array.from(intro.matchAll(/^## (Chapter (\w+)\. (.+))$/gm), (ma
 	index: match.index,
 	number: match[2],
 	title: match[3],
-	// the heading's id, as rehype-slug makes it
-	href: `/#${match[1]
-		.toLowerCase()
-		.replace(/[^\w\s-]/g, '')
-		.replace(/\s/g, '-')}`
+	href: `/#${anchors['/'][match[1]]}`
 }));
 
 const articles: Article[] = Array.from(intro.matchAll(LINK), (match) => {
