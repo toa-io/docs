@@ -38,7 +38,7 @@
 				<Item.Media variant="icon"><BookText /></Item.Media>
 				<Item.Content>
 					<Item.Title>Userspace</Item.Title>
-					<Item.Description>How to use</Item.Description>
+					<Item.Description>Building applications</Item.Description>
 				</Item.Content>
 				<Item.Actions><ChevronRight class="size-4" /></Item.Actions>
 			</Item.Root>
