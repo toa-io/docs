@@ -2,7 +2,6 @@
 	import './layout.css';
 	import { page } from '$app/state';
 	import { House } from '@lucide/svelte';
-	import favicon from '#lib/assets/favicon.svg';
 	import type { LayoutProps } from './$types';
 
 	let { children, data }: LayoutProps = $props();
@@ -15,7 +14,9 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" href={favicon} />
+	<link rel="icon" href="/favicon.ico" sizes="32x32" />
+	<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 	<title>{title}</title>
 	<meta property="og:title" content={title} />
 </svelte:head>
