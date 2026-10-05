@@ -17,6 +17,9 @@ Neither section names or depends on a particular application built on Toa.
 
 An operation refuses by returning an error whose message is its code: `return new Error('CODE')`.
 
+A text does not announce itself. No "this section teaches", "this article covers", "in this
+chapter": say the thing.
+
 # Routines
 
 ## Approved content
