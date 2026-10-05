@@ -97,6 +97,11 @@ hr {
 	h3 {
 		@apply text-lg font-bold;
 	}
+	h4,
+	h5,
+	h6 {
+		@apply font-bold;
+	}
 
 	article {
 		@apply space-y-4;
