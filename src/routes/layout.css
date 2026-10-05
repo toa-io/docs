@@ -5,6 +5,11 @@
 	--foreground: oklch(0.145 0 0);
 	--muted: oklch(0.97 0 0);
 	--muted-foreground: oklch(0.556 0 0);
+	--code-keyword: oklch(0.5 0.2 300);
+	--code-key: oklch(0.48 0.15 250);
+	--code-string: oklch(0.5 0.13 150);
+	--code-literal: oklch(0.55 0.17 50);
+	--code-function: oklch(0.5 0.14 220);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,6 +18,11 @@
 		--foreground: oklch(0.985 0 0);
 		--muted: oklch(0.269 0 0);
 		--muted-foreground: oklch(0.708 0 0);
+		--code-keyword: oklch(0.78 0.14 300);
+		--code-key: oklch(0.78 0.11 250);
+		--code-string: oklch(0.8 0.13 150);
+		--code-literal: oklch(0.8 0.13 60);
+		--code-function: oklch(0.8 0.1 220);
 	}
 }
 
@@ -111,4 +121,43 @@ hr {
 		content: counter(footnotes);
 		top: -0.2em;
 	}
+}
+
+/* Prism tokens emitted by mdsvex */
+pre[class*='language-'] code {
+	@apply text-foreground;
+}
+
+.token.comment {
+	@apply text-muted-foreground italic;
+}
+
+.token.punctuation,
+.token.operator {
+	@apply text-muted-foreground;
+}
+
+.token.keyword {
+	color: var(--code-keyword);
+}
+
+.token.key,
+.token.atrule {
+	color: var(--code-key);
+}
+
+.token.string {
+	color: var(--code-string);
+}
+
+.token.number,
+.token.boolean,
+.token.null,
+.token.constant {
+	color: var(--code-literal);
+}
+
+.token.function,
+.token.class-name {
+	color: var(--code-function);
 }
