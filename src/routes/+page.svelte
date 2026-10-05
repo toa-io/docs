@@ -10,7 +10,7 @@
 		<p class="text-6xl font-bold tracking-tight md:text-7xl">{data.hero.name}</p>
 		<p class="mt-2 text-xl text-muted-foreground">{data.hero.title}</p>
 	</div>
-	<p class="border-muted-foreground/25 text-lg md:flex-1 md:border-l md:pl-10">
+	<p class="border-muted-foreground/25 text-lg text-balance md:flex-1 md:border-l md:pl-10">
 		{data.hero.motto}
 	</p>
 </section>
