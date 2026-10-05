@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { House } from '@lucide/svelte';
+	import { ArrowUp } from '@lucide/svelte';
 	import * as Footer from '#lib/footer/index.ts';
 	import type { PageProps } from './$types';
 
@@ -30,7 +30,7 @@
 </Footer.Start>
 
 <Footer.Center>
-	<a href="/" aria-label="Home"><House class="size-4 text-muted-foreground" /></a>
+	<a href="/model/" aria-label="Contents"><ArrowUp class="size-4 text-muted-foreground" /></a>
 </Footer.Center>
 
 <Footer.End>
