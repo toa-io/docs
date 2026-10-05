@@ -5,14 +5,41 @@
 	--foreground: oklch(0.145 0 0);
 	--muted: oklch(0.97 0 0);
 	--muted-foreground: oklch(0.556 0 0);
+	--primary: oklch(0.205 0 0);
+	--primary-foreground: oklch(0.985 0 0);
+	--secondary: oklch(0.97 0 0);
+	--secondary-foreground: oklch(0.205 0 0);
+	--destructive: oklch(0.577 0.245 27);
+	--border: oklch(0.922 0 0);
+	--input: oklch(0.922 0 0);
+	--ring: oklch(0.708 0 0);
+	--radius: 0.625rem;
+	--code-keyword: oklch(0.5 0.2 300);
+	--code-key: oklch(0.48 0.15 250);
+	--code-string: oklch(0.5 0.13 150);
+	--code-literal: oklch(0.55 0.17 50);
+	--code-function: oklch(0.5 0.14 220);
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--background: oklch(0.145 0 0);
-		--foreground: oklch(0.985 0 0);
-		--muted: oklch(0.269 0 0);
-		--muted-foreground: oklch(0.708 0 0);
+		--background: oklch(0.16 0.02 265);
+		--foreground: oklch(0.95 0.01 265);
+		--muted: oklch(0.25 0.025 265);
+		--muted-foreground: oklch(0.72 0.025 265);
+		--primary: oklch(0.92 0.01 265);
+		--primary-foreground: oklch(0.2 0.02 265);
+		--secondary: oklch(0.25 0.025 265);
+		--secondary-foreground: oklch(0.95 0.01 265);
+		--destructive: oklch(0.7 0.19 22);
+		--border: oklch(0.95 0.01 265 / 12%);
+		--input: oklch(0.95 0.01 265 / 15%);
+		--ring: oklch(0.556 0.025 265);
+		--code-keyword: oklch(0.78 0.14 300);
+		--code-key: oklch(0.78 0.11 250);
+		--code-string: oklch(0.8 0.13 150);
+		--code-literal: oklch(0.8 0.13 60);
+		--code-function: oklch(0.8 0.1 220);
 	}
 }
 
@@ -21,56 +48,87 @@
 	--color-foreground: var(--foreground);
 	--color-muted: var(--muted);
 	--color-muted-foreground: var(--muted-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-destructive: var(--destructive);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
 }
 
-body {
-	@apply bg-background text-foreground;
-}
-
-header {
-	h1 {
-		@apply text-2xl font-bold;
+/* in the base layer: utilities override these */
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
 	}
-	p {
+
+	body {
+		@apply bg-background text-foreground;
+	}
+
+	code {
+		@apply rounded-md bg-muted px-1 text-muted-foreground;
+	}
+
+	pre {
+		@apply overflow-x-auto rounded-md bg-muted px-4 py-2 text-muted-foreground;
+	}
+
+	pre code {
+		@apply rounded-none bg-transparent p-0;
+	}
+
+	a {
+		@apply underline underline-offset-2;
+	}
+
+	a:hover {
 		@apply text-muted-foreground;
 	}
-}
 
-code {
-	@apply rounded-md bg-muted px-1 text-muted-foreground;
-}
+	ol {
+		@apply list-outside list-decimal pl-6;
+	}
 
-pre {
-	@apply overflow-x-auto rounded-md bg-muted px-4 py-2 text-muted-foreground;
-}
+	ul {
+		@apply list-outside list-disc pl-6;
+	}
 
-pre code {
-	@apply rounded-none bg-transparent p-0;
-}
+	table {
+		@apply block border-collapse overflow-x-auto;
+	}
 
-a {
-	@apply underline underline-offset-2;
-}
+	th,
+	td {
+		@apply border-b border-muted-foreground/25 py-2 pr-6 text-left align-top;
+	}
 
-a:hover {
-	@apply text-muted-foreground;
-}
+	hr {
+		@apply border-muted-foreground/50;
+	}
 
-ol {
-	@apply list-outside list-decimal pl-6;
-}
-
-ul {
-	@apply list-outside list-disc pl-6;
-}
-
-hr {
-	@apply border-muted-foreground/50;
-}
-
-@layer typography {
+	/* the title of a page */
 	h1 {
-		@apply text-2xl font-bold;
+		@apply pb-8 text-4xl font-bold tracking-tight md:pb-12 md:text-5xl;
+	}
+
+	/* its subtitle */
+	hgroup:has(> h1) {
+		@apply pb-8 md:pb-12;
+
+		h1 {
+			@apply pb-0;
+		}
+
+		p {
+			@apply mt-2 text-xl text-muted-foreground;
+		}
 	}
 	h2 {
 		@apply text-xl font-bold;
@@ -78,9 +136,20 @@ hr {
 	h3 {
 		@apply text-lg font-bold;
 	}
+	h4,
+	h5,
+	h6 {
+		@apply font-bold;
+	}
 
 	article {
 		@apply space-y-4;
+	}
+
+	/* the text column is narrower than the page: headings hang out of it to the left */
+	article > :not(h1, h2, h3, h4, h5, h6, hgroup, a, .intro),
+	.intro > :not(h1, h2, h3, h4, h5, h6, hgroup) {
+		@apply mx-auto max-w-3xl;
 	}
 
 	blockquote {
@@ -102,4 +171,43 @@ hr {
 		content: counter(footnotes);
 		top: -0.2em;
 	}
+}
+
+/* Prism tokens emitted by mdsvex */
+pre[class*='language-'] code {
+	@apply text-foreground;
+}
+
+.token.comment {
+	@apply text-muted-foreground italic;
+}
+
+.token.punctuation,
+.token.operator {
+	@apply text-muted-foreground;
+}
+
+.token.keyword {
+	color: var(--code-keyword);
+}
+
+.token.key,
+.token.atrule {
+	color: var(--code-key);
+}
+
+.token.string {
+	color: var(--code-string);
+}
+
+.token.number,
+.token.boolean,
+.token.null,
+.token.constant {
+	color: var(--code-literal);
+}
+
+.token.function,
+.token.class-name {
+	color: var(--code-function);
 }

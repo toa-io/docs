@@ -18,12 +18,19 @@ export default defineConfig({
 		sveltekit({
 			compilerOptions: {
 				// Force runes mode for the project, except for libraries. Can be removed in svelte 6.
+				// Documents are an exception as well: mdsvex generates legacy components.
 				runes: ({ filename }) =>
-					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
+					filename.split(/[/\\]/).includes('node_modules') || filename.endsWith('.md')
+						? undefined
+						: true
 			},
 			adapter: adapter(),
 			preprocess: [
-				mdsvex({ extensions: ['.svx', '.md'], rehypePlugins: [slug, [links, { root: docs }]] })
+				mdsvex({
+					extensions: ['.svx', '.md'],
+					layout: path.resolve('src/lib/markdown/Layout.svelte'),
+					rehypePlugins: [slug, [links, { root: docs }]]
+				})
 			],
 			extensions: ['.svelte', '.svx', '.md']
 		})
