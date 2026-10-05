@@ -27,7 +27,7 @@
 						<Item.Media variant="icon"><Brain /></Item.Media>
 						<Item.Content>
 							<Item.Title>Mental model</Item.Title>
-							<Item.Description>Concepts and guarantees</Item.Description>
+							<Item.Description>Understanding the runtime</Item.Description>
 						</Item.Content>
 						<Item.Actions><ChevronRight class="size-4" /></Item.Actions>
 					</a>
