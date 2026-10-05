@@ -33,7 +33,7 @@ const anchor = (route: string, slug: string) => slugs[route]?.[slug] ?? slug;
  *
  * - rewrites relative links between documentation files (`../basics/1.calls.md#local-calls`)
  *   to site routes (`/basics/calls/#local`)
- * - gives the headings below the first level their laconic anchors, and links to them
+ * - gives the headings below the first level their laconic anchors, and finds their subtitles
  */
 export function links({ root }: { root: string }) {
 	return (tree: Node, file: { filename?: string }) => {
@@ -41,9 +41,10 @@ export function links({ root }: { root: string }) {
 		const dir = path.dirname(filename);
 		const current = route(path.relative(root, filename));
 
-		visit(tree, (node) => {
+		visit(tree, (node, next) => {
 			if (node.tagName === 'a') link(node, dir, current);
-			else if (node.tagName !== undefined && HEADINGS.has(node.tagName)) heading(node, current);
+			else if (node.tagName !== undefined && HEADINGS.has(node.tagName))
+				heading(node, current, next);
 		});
 	};
 
@@ -65,23 +66,40 @@ export function links({ root }: { root: string }) {
 	}
 }
 
-function heading(node: Node, current: string) {
-	const slug = node.properties?.id;
+// `Transition: change the current state`
+const SUBTITLED = /^([^:]+): (.+)$/;
 
-	if (typeof slug !== 'string') return;
+function heading(node: Node, current: string, next?: Node) {
+	const properties = (node.properties ??= {});
 
-	const id = anchor(current, slug);
+	if (typeof properties.id === 'string') properties.id = anchor(current, properties.id);
 
-	node.properties!.id = id;
-	node.children = [
-		{
-			type: 'element',
-			tagName: 'a',
-			properties: { href: `#${id}`, className: ['anchor'], ariaLabel: 'Link to this section' },
-			children: [{ type: 'text', value: '§' }]
-		},
-		...(node.children ?? [])
-	];
+	properties.level = node.tagName!.slice(1);
+
+	const [text, ...rest] = node.children ?? [];
+	const match = rest.length === 0 && text?.type === 'text' ? SUBTITLED.exec(text.value!) : null;
+
+	if (match !== null) {
+		// the subtitle is what follows the colon
+		text.value = match[1];
+		properties.subtitle = match[2][0].toUpperCase() + match[2].slice(1);
+	} else if (next !== undefined && emphasis(next) !== undefined) {
+		// or the emphasized paragraph under the heading
+		properties.subtitle = emphasis(next);
+		next.type = 'comment';
+		next.value = '';
+	}
+}
+
+// the text of a paragraph that is emphasized as a whole
+function emphasis(node: Node) {
+	const [em, ...rest] = node.children ?? [];
+	const [text, ...more] = em?.children ?? [];
+
+	if (node.tagName !== 'p' || rest.length > 0 || em?.tagName !== 'em') return undefined;
+	if (more.length > 0 || text?.type !== 'text') return undefined;
+
+	return text.value;
 }
 
 // `basics/1.calls.md` → `/basics/calls/`, `0.intro.md` → `/`
@@ -95,9 +113,17 @@ function route(file: string) {
 	return `/${segments.join('/')}/`;
 }
 
-function visit(node: Node, fn: (node: Node) => void) {
-	const children = node.children;
+// calls `fn` with each node and the element that follows it
+function visit(node: Node, fn: (node: Node, next?: Node) => void, next?: Node) {
+	const children = node.children ?? [];
 
-	fn(node);
-	children?.forEach((child) => visit(child, fn));
+	fn(node, next);
+
+	children.forEach((child, index) =>
+		visit(
+			child,
+			fn,
+			children.slice(index + 1).find((sibling) => sibling.type === 'element')
+		)
+	);
 }

@@ -108,8 +108,8 @@ hr {
 	}
 
 	/* the text column is narrower than the page: headings hang out of it to the left */
-	article > :not(h1, h2, h3, h4, h5, h6, a, section, .intro),
-	.intro > :not(h1, h2, h3, h4, h5, h6) {
+	article > :not(h1, h2, h3, h4, h5, h6, hgroup, a, section, .intro),
+	.intro > :not(h1, h2, h3, h4, h5, h6, hgroup) {
 		@apply mx-auto max-w-3xl;
 	}
 
@@ -171,13 +171,4 @@ pre[class*='language-'] code {
 .token.function,
 .token.class-name {
 	color: var(--code-function);
-}
-
-/* the link to a section, before the text of its heading */
-a.anchor {
-	@apply pr-1 font-normal text-muted-foreground/50 no-underline;
-}
-
-a.anchor:hover {
-	@apply text-muted-foreground;
 }
