@@ -1,0 +1,105 @@
+@import 'tailwindcss';
+
+:root {
+	--background: oklch(1 0 0);
+	--foreground: oklch(0.145 0 0);
+	--muted: oklch(0.97 0 0);
+	--muted-foreground: oklch(0.556 0 0);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background: oklch(0.145 0 0);
+		--foreground: oklch(0.985 0 0);
+		--muted: oklch(0.269 0 0);
+		--muted-foreground: oklch(0.708 0 0);
+	}
+}
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+}
+
+body {
+	@apply bg-background text-foreground;
+}
+
+header {
+	h1 {
+		@apply text-2xl font-bold;
+	}
+	p {
+		@apply text-muted-foreground;
+	}
+}
+
+code {
+	@apply rounded-md bg-muted px-1 text-muted-foreground;
+}
+
+pre {
+	@apply overflow-x-auto rounded-md bg-muted px-4 py-2 text-muted-foreground;
+}
+
+pre code {
+	@apply rounded-none bg-transparent p-0;
+}
+
+a {
+	@apply underline underline-offset-2;
+}
+
+a:hover {
+	@apply text-muted-foreground;
+}
+
+ol {
+	@apply list-outside list-decimal pl-6;
+}
+
+ul {
+	@apply list-outside list-disc pl-6;
+}
+
+hr {
+	@apply border-muted-foreground/50;
+}
+
+@layer typography {
+	h1 {
+		@apply text-2xl font-bold;
+	}
+	h2 {
+		@apply text-xl font-bold;
+	}
+	h3 {
+		@apply text-lg font-bold;
+	}
+
+	article {
+		@apply space-y-4;
+	}
+
+	blockquote {
+		@apply border-l-2 pl-4 italic;
+	}
+
+	ol.footnotes {
+		@apply list-none border-t border-muted-foreground/25 pt-4 pl-2! text-sm text-muted-foreground;
+		counter-reset: footnotes;
+	}
+
+	ol.footnotes li {
+		@apply relative list-none pl-2;
+		counter-increment: footnotes;
+	}
+
+	ol.footnotes li::before {
+		@apply absolute left-0 align-super text-xs;
+		content: counter(footnotes);
+		top: -0.2em;
+	}
+}
