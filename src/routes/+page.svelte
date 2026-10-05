@@ -37,7 +37,7 @@
 			<Item.Root variant="outline" aria-disabled="true" class="opacity-50">
 				<Item.Media variant="icon"><BookText /></Item.Media>
 				<Item.Content>
-					<Item.Title>Application</Item.Title>
+					<Item.Title>Userspace</Item.Title>
 					<Item.Description>How to use</Item.Description>
 				</Item.Content>
 				<Item.Actions><ChevronRight class="size-4" /></Item.Actions>
