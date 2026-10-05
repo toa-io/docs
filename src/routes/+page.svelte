@@ -29,7 +29,7 @@
 							<Item.Title>Mental model</Item.Title>
 							<Item.Description>Understanding the runtime</Item.Description>
 						</Item.Content>
-						<Item.Actions><ChevronRight class="size-4" /></Item.Actions>
+						<Item.Actions class="ml-2"><ChevronRight class="size-4" /></Item.Actions>
 					</a>
 				{/snippet}
 			</Item.Root>
@@ -40,7 +40,7 @@
 					<Item.Title>Userspace</Item.Title>
 					<Item.Description>Building applications</Item.Description>
 				</Item.Content>
-				<Item.Actions><ChevronRight class="size-4" /></Item.Actions>
+				<Item.Actions class="ml-2"><ChevronRight class="size-4" /></Item.Actions>
 			</Item.Root>
 		</div>
 	</nav>
