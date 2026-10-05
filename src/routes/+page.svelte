@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Intro from '$docs/0.intro.md';
-	import Themes from '#lib/Themes.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -19,8 +18,6 @@
 <div class="intro space-y-4">
 	<Intro />
 </div>
-
-<Themes />
 
 <style>
 	/* the title and the motto are shown in the hero */
