@@ -1,4 +1,4 @@
-import intro from '$docs/0.intro.md?raw';
+import intro from '$content/0.intro.md?raw';
 import { anchors } from '#lib/anchors.ts';
 import { keywords } from '#lib/keywords.ts';
 

@@ -2,7 +2,7 @@ import { error } from '@sveltejs/kit';
 import type { Component } from 'svelte';
 import type { EntryGenerator, PageLoad } from './$types';
 
-const modules = import.meta.glob<{ default: Component }>('$docs/*/*.md');
+const modules = import.meta.glob<{ default: Component }>('$content/*/*.md');
 
 // `…/basics/1.calls.md` → `basics/calls`
 const articles = Object.fromEntries(

@@ -7,3 +7,6 @@ bun.lockb
 
 # Miscellaneous
 /static/
+
+# Documents are not formatted: approved content is immutable
+/content/
