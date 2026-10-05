@@ -13,8 +13,9 @@
 		const chapter = data.chapters.find((c) => c.href === page.url.pathname);
 
 		if (chapter !== undefined) return { ...chapter, title: `${chapter.title} · Toa` };
-		if (page.url.pathname === '/model/')
-			return { ...data.model, title: `${data.model.title} · Toa` };
+		const section = data.sections[page.url.pathname];
+
+		if (section !== undefined) return { ...section, title: `${section.title} · Toa` };
 
 		return {
 			title: `${data.home.name}: ${data.home.title}`,

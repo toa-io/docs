@@ -34,13 +34,21 @@
 				{/snippet}
 			</Item.Root>
 
-			<Item.Root variant="outline" aria-disabled="true" class="opacity-50">
-				<Item.Media variant="icon"><BookText /></Item.Media>
-				<Item.Content>
-					<Item.Title>Userspace</Item.Title>
-					<Item.Description>Building applications</Item.Description>
-				</Item.Content>
-				<Item.Actions class="ml-2"><ChevronRight class="size-4" /></Item.Actions>
+			<Item.Root variant="outline">
+				{#snippet child({ props })}
+					<a
+						href="/userspace/"
+						{...props}
+						class={[props.class, 'no-underline hover:text-foreground']}
+					>
+						<Item.Media variant="icon"><BookText /></Item.Media>
+						<Item.Content>
+							<Item.Title>Userspace</Item.Title>
+							<Item.Description>Building applications</Item.Description>
+						</Item.Content>
+						<Item.Actions class="ml-2"><ChevronRight class="size-4" /></Item.Actions>
+					</a>
+				{/snippet}
 			</Item.Root>
 		</div>
 	</nav>

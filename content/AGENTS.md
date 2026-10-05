@@ -1,8 +1,21 @@
 # Purpose
 
-Work in this directory develops documentation that explains what Toa is: the runtime's
-foundational concepts, its main mechanisms, and how they fit together. The goal is conceptual
-understanding, not teaching readers how to use it.
+Work in this directory develops the Toa documentation. It has two sections, each a directory
+whose `0.intro.md` is its table of contents and whose subdirectories are chapters.
+
+- `model` explains what Toa is: the runtime's foundational concepts, its main mechanisms, and
+  how they fit together. The goal is conceptual understanding, not teaching readers how to use
+  it.
+- `userspace` teaches how to build applications: what to declare, what to call, what comes back,
+  and what the developer has to handle. It goes from simple to complicated, on one running
+  example (a shop: `store.orders`, `store.accounts`), and links to `model` for the concepts
+  instead of repeating them. Read front to back, it covers every option and feature.
+
+Neither section names or depends on a particular application built on Toa.
+
+# Conventions
+
+An operation refuses by returning an error whose message is its code: `return new Error('CODE')`.
 
 # Routines
 

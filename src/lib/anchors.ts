@@ -11,6 +11,17 @@ export const anchors: Record<string, Record<string, string>> = {
 		'Chapter VII. Running': 'running'
 	},
 
+	'/userspace/': {
+		'Chapter I. Getting Started': 'start',
+		'Chapter II. Components': 'components',
+		'Chapter III. Reliability': 'reliability',
+		'Chapter IV. Time and Flow': 'flow',
+		'Chapter V. The Gateway': 'gateway',
+		'Chapter VI. Identity and Access': 'identity',
+		'Chapter VII. Platform Services': 'services',
+		'Chapter VIII. Running': 'running'
+	},
+
 	'/model/foundations/separation/': {
 		'The problem': 'problem',
 		'Operations and declarations': 'declarations'
