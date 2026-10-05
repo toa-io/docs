@@ -8,7 +8,9 @@
 </script>
 
 <article class="flex-1">
-	<h1 class="py-8 text-4xl font-bold tracking-tight md:py-12 md:text-5xl">{data.model.title}</h1>
+	<a href="/" class="text-sm text-muted-foreground no-underline">{data.home.name}</a>
+
+	<h1 class="pb-8 text-4xl font-bold tracking-tight md:pb-12 md:text-5xl">{data.model.title}</h1>
 
 	<div class="intro space-y-4">
 		<Intro />
