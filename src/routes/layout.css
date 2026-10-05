@@ -72,15 +72,6 @@
 		@apply bg-background text-foreground;
 	}
 
-	header {
-		h1 {
-			@apply text-2xl font-bold;
-		}
-		p {
-			@apply text-muted-foreground;
-		}
-	}
-
 	code {
 		@apply rounded-md bg-muted px-1 text-muted-foreground;
 	}
@@ -122,8 +113,22 @@
 		@apply border-muted-foreground/50;
 	}
 
+	/* the title of a page */
 	h1 {
-		@apply text-2xl font-bold;
+		@apply pb-8 text-4xl font-bold tracking-tight md:pb-12 md:text-5xl;
+	}
+
+	/* its subtitle */
+	hgroup:has(> h1) {
+		@apply pb-8 md:pb-12;
+
+		h1 {
+			@apply pb-0;
+		}
+
+		p {
+			@apply mt-2 text-xl text-muted-foreground;
+		}
 	}
 	h2 {
 		@apply text-xl font-bold;

@@ -10,6 +10,9 @@
 		const article = data.articles.find((a) => a.href === page.url.pathname);
 
 		if (article !== undefined) return { ...article, title: `${article.title} · Toa` };
+		const chapter = data.chapters.find((c) => c.href === page.url.pathname);
+
+		if (chapter !== undefined) return { ...chapter, title: `${chapter.title} · Toa` };
 		if (page.url.pathname === '/model/')
 			return { ...data.model, title: `${data.model.title} · Toa` };
 

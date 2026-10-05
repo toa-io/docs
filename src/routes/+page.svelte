@@ -11,7 +11,7 @@
 <main class="flex flex-1 flex-col justify-center gap-12">
 	<header class="flex flex-col gap-6 md:flex-row md:items-center md:gap-10">
 		<div class="md:flex-1">
-			<h1 class="text-6xl font-bold tracking-tight md:text-7xl">{data.home.name}</h1>
+			<h1 class="pb-0 text-6xl md:pb-0 md:text-7xl">{data.home.name}</h1>
 			<p class="mt-2 text-xl text-muted-foreground">{data.home.title}</p>
 		</div>
 		<p class="text-lg text-balance text-foreground md:flex-1 md:border-l md:pl-10">

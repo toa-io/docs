@@ -14,7 +14,7 @@
 
 <article class="flex-1">
 	{#if article}
-		<a href={article.chapter.href} class="text-sm text-muted-foreground no-underline">
+		<a href={article.chapter.anchor} class="text-sm text-muted-foreground no-underline">
 			{article.chapter.number}
 			{article.chapter.title}
 		</a>
