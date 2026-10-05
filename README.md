@@ -1,4 +1,4 @@
-# toa.svelte
+# docs
 
 Website of the [Toa](https://github.com/toa-io/toa) documentation.
 
