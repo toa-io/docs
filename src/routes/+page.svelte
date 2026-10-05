@@ -51,3 +51,7 @@
 		<GitHub />
 	</a>
 </Footer.Center>
+
+<Footer.End>
+	<a href="https://creativecommons.org/licenses/by/4.0/" class="text-xs">CC BY 4.0</a>
+</Footer.End>
