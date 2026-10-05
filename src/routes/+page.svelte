@@ -25,4 +25,9 @@
 	.intro :global(> h1:first-child + p) {
 		display: none;
 	}
+
+	/* the links of the contents are bold in the source */
+	.intro :global(strong:has(> a)) {
+		font-weight: normal;
+	}
 </style>
