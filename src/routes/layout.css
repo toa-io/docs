@@ -179,7 +179,7 @@ pre[class*='language-'] code {
 }
 
 a.anchor {
-	@apply absolute top-1/2 right-full -translate-y-1/2 pr-1 text-base font-normal text-muted-foreground/50 no-underline;
+	@apply absolute top-1/2 right-full -translate-y-1/2 pr-1 font-normal text-muted-foreground/50 no-underline;
 }
 
 a.anchor:hover {
