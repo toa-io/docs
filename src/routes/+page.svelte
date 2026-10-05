@@ -47,11 +47,11 @@
 </main>
 
 <Footer.Center>
-	<a href="https://github.com/toa-io/toa" aria-label="Toa on GitHub" class="text-muted-foreground">
-		<GitHub />
-	</a>
+	<a href="https://creativecommons.org/licenses/by/4.0/" class="text-xs">CC BY 4.0</a>
 </Footer.Center>
 
 <Footer.End>
-	<a href="https://creativecommons.org/licenses/by/4.0/" class="text-xs">CC BY 4.0</a>
+	<a href="https://github.com/toa-io/toa" aria-label="Toa on GitHub" class="text-muted-foreground">
+		<GitHub />
+	</a>
 </Footer.End>
