@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Intro from '$docs/0.intro.md';
+	import Intro from '$content/0.intro.md';
 	import { House } from '@lucide/svelte';
 	import * as Footer from '#lib/footer/index.ts';
 	import type { PageProps } from './$types';

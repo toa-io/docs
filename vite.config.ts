@@ -7,12 +7,11 @@ import { defineConfig } from 'vite';
 import slug from 'rehype-slug';
 import { links } from './src/lib/links.ts';
 
-// Toa documentation sources: the `docs` directory of the `toa` repository
-const docs = path.resolve(process.env.TOA_DOCS ?? '../toa/docs');
+// the documents the pages are rendered from
+const content = path.resolve('content');
 
 export default defineConfig({
-	resolve: { alias: { $docs: docs } },
-	server: { fs: { allow: [docs] } },
+	resolve: { alias: { $content: content } },
 	plugins: [
 		tailwindcss(),
 		sveltekit({
@@ -29,7 +28,7 @@ export default defineConfig({
 				mdsvex({
 					extensions: ['.svx', '.md'],
 					layout: path.resolve('src/lib/markdown/Layout.svelte'),
-					rehypePlugins: [slug, [links, { root: docs }]]
+					rehypePlugins: [slug, [links, { root: content }]]
 				})
 			],
 			extensions: ['.svelte', '.svx', '.md']
