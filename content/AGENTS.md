@@ -6,10 +6,15 @@ whose `0.intro.md` is its table of contents and whose subdirectories are chapter
 - `model` explains what Toa is: the runtime's foundational concepts, its main mechanisms, and
   how they fit together. The goal is conceptual understanding, not teaching readers how to use
   it.
-- `userspace` teaches how to build applications: what to declare, what to call, what comes back,
-  and what the developer has to handle. It goes from simple to complicated, on one running
-  example (a shop: `store.orders`, `store.accounts`), and links to `model` for the concepts
-  instead of repeating them. Read front to back, it covers every option and feature.
+- `userspace` teaches a developer to turn business requirements into a working application: what
+  to write, which files to create, how to run and test it, how to declare resources. It follows
+  the path of someone getting to know the system — an application, a component, a call from the
+  command line, an API, a test, configuration, and on by increasing complexity — on one running
+  example (a shop: `store.orders`, `store.accounts`). Every article answers "how do I do X?" for
+  an X a requirement asks for, and is titled after it. Internals and guarantees are kept to the
+  rule they impose on the developer's code, with a link to `model` for the rest. Its last
+  chapter, Patterns, is where design decisions are reasoned out — when a call and when an event,
+  how a payment is taken — for developers new to distributed systems.
 
 Neither section names or depends on a particular application built on Toa.
 

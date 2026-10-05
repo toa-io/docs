@@ -66,172 +66,199 @@ export const keywords: Record<string, string> = {
 	'/model/running/halt/': 'halt, graceful stop, deployment',
 
 	'/userspace/':
-		'Toa, userspace, building applications, guide, components, operations, gateway, deployment',
+		'Toa, userspace, building applications, guide, components, operations, API, testing, deployment, patterns',
 
-	'/userspace/start/project/':
-		'project structure, context.toa.yaml, manifest.toa.yaml, components, template',
+	'/userspace/start/application/':
+		'project, layout, package.json, @toa.io/runtime, context.toa.yaml, registry, amqp, mongodb, stash, storages, authorities, docker-compose, rabbitmq, redis, template',
 	'/userspace/start/component/':
-		'first component, entity, generic prototype, transit, observe, transition, tutorial',
+		'component, manifest.toa.yaml, entity, blank, namespace, observe, enumerate, assign, terminate, transit, forward, transition, concurrency, query, errors, toa export manifest',
 	'/userspace/start/running/':
-		'toa env, toa map, toa compose, toa call, toa mono, local development, composition',
+		'toa env, --dev, toa map, toa compose, toa call, .env, .map.json, composition, request, input, query, RemoteError, RequestContractException, --kill',
+	'/userspace/start/api/':
+		'exposition, gateway, route, io:output, anonymous, toa mono, port 8000, curl, accept, content-type, 422, 400, 401, 404, trailing slash',
+	'/userspace/start/testing/':
+		'test, cucumber, gherkin, feature, scenario, stage, @toa.io/userland, @toa.io/agent, compose, serve, remote, invoke, shutdown, captures, ${{ }}, #{{ }}, responseIncludes, pipeline',
+	'/userspace/start/configuration/':
+		'configuration, schema, defaults, context.configuration, limit, @environment, @local, toa env, staging, secret, LIMIT_EXCEEDED',
 
-	'/userspace/components/manifest/':
-		'manifest, entity, JSON Schema, blank, system properties, VERSION, associated, moments, epoch-millis',
-	'/userspace/components/operations/':
-		'operations, transition, observation, assignment, computation, effect, unmanaged, scope, concurrency, input, output',
-	'/userspace/components/errors/':
-		'errors, exceptions, new Error, error codes, DISCARD, 422, refusal',
-	'/userspace/components/requests/':
-		'request, query, criteria, RSQL, sort, limit, omit, projection, version, context.remote, context.local',
-	'/userspace/components/prototype/':
-		'prototype, inheritance, transit, observe, enumerate, assign, terminate, forward, created, updated, deleted',
-	'/userspace/components/events/':
-		'events, condition, payload, trailers, TRAILERS, origin, state, publishing',
-	'/userspace/components/receivers/':
-		'receivers, events, request adapter, condition, arguments, foreign events, binding, source',
-	'/userspace/components/context/':
-		'operation context, context.local, context.remote, context.id, context.now, context.random, aspects, configuration',
-	'/userspace/components/guards/': 'guards, invariants, origin, state, validation',
-	'/userspace/components/lifecycle/':
-		'run commands, rc, preflight, settle, ready, dispose, pause, resume, context.state, lifecycle',
-	'/userspace/components/typescript/':
-		'TypeScript, toa types, generated types, import type, erasable syntax, tsconfig, JSDoc',
-	'/userspace/components/migrations/':
-		'migrations, indexes, unique index, ttl, partial index, update, MongoDB, rolling update',
+	'/userspace/logic/state/':
+		'manifest, entity, properties, required, blank, id, VERSION, CREATED, UPDATED, DELETED, REGION, associated, date-time, epoch-millis, storage, namespace',
+	'/userspace/logic/operations/':
+		'operation, transition, observation, assignment, computation, effect, unmanaged, entry, entries, changeset, scope, input, output, concurrency, retry, query, description, mount, factory',
+	'/userspace/logic/errors/':
+		'error, errors, code, instanceof, exception, throw, 422, 400, 404, 409, 412, 500, DISCARD, refusal',
+	'/userspace/logic/calls/':
+		'request, context.remote, context.local, query, criteria, rsql, sort, omit, limit, sample, projection, version, deleted, search, output, create',
+	'/userspace/logic/prototype/':
+		'prototype, transit, observe, enumerate, stream, assign, terminate, ensure, forward, created, updated, deleted, sync, inheritance',
+	'/userspace/logic/guards/': 'guard, guards, invariant, origin, constraint, validation, 213',
+	'/userspace/logic/events/':
+		'event, events, condition, payload, origin, state, trailers, TRAILERS, publish, context events, subscriber',
+	'/userspace/logic/receivers/':
+		'receiver, receivers, request, condition, arguments, binding, source, amqp, subscribe, foreign events',
+	'/userspace/logic/tasks/':
+		'task, background, async, queue, null reply, context.local, context.remote, refund, deadline',
+	'/userspace/logic/repeats/':
+		'idempotency, once, duplicate, retry, VERSION, inbox, retention, idempotency-key, call id, charge twice',
+	'/userspace/logic/external/':
+		'fetch, http, provider, api key, secret, stub, retry, timeout, signal, Retry-After, toa.fetch',
+	'/userspace/logic/workflows/':
+		'continuity, workflow, saga, steps, resume, effect, context.now, context.id, context.random, Unrecordable',
+	'/userspace/logic/schedules/':
+		'cadence, pulse, schedule, cron, cycle, intervals, zone, overdue, scope replica, region, atomicity, periodic',
+	'/userspace/logic/delays/':
+		'delay, context.delay, cancel, interval, overdue, unchained, discreteness, timeout, reminder, expire, deadline',
+	'/userspace/logic/collections/':
+		'stream, collection, export, sync, token, entry, removed, limit, sort, stop, images, StateHistory, search index',
+	'/userspace/logic/streams/':
+		'stream, generator, Readable, streamed reply, streamed input, upload, import, http binding, Unreachable, RequestContract',
+	'/userspace/logic/processes/':
+		'rc, run commands, preflight, settle, ready, dispose, pause, resume, state, stateful, instance, TOA_INSTANCE, Addressee, Abandoned, addressed timeout',
+	'/userspace/logic/chains/':
+		'LoopException, SafetyException, cycle, loop, trail, unchained, readonly, GET, TOA_TRAIL_REPEATS, TOA_TRAIL_DEPTH, io:readonly',
+	'/userspace/logic/typescript/':
+		'typescript, ts, toa types, toa.d.ts, index.d.ts, Entity, State, Context, jsdoc, tsc, tsconfig, import type, enum',
+	'/userspace/logic/migrations/':
+		'migration, migrations, index, dropIndex, unique, partial, sparse, ttl, text, update, delete, images, backfill',
+	'/userspace/logic/context/':
+		'context, local, remote, id, now, random, env, name, region, instance, configuration, fetch, delay, state, stash, atom, storages, logs, span, metrics, aspects',
 
-	'/userspace/reliability/delivery/':
-		'delivery, retry, exception, at-least-once, parked, comq.parked, dead letter, backoff, receiver, repeat',
-	'/userspace/reliability/committed-events/':
-		'outbox, events, atomicity, trailers, TRAILERS, VERSION, ordering, origin, state, retention, replica set',
-	'/userspace/reliability/idempotency/':
-		'once, inbox, idempotency, idempotency-key, duplicate, identity, retention, retry, exactly once',
-	'/userspace/reliability/tasks/':
-		'task, background, queue, async, task true, local, remote, deadline, refusal',
-	'/userspace/reliability/continuity/':
-		'continuity, resume, effect, steps, saga, workflow, context.now, context.id, context.random, journal',
-	'/userspace/reliability/call-chains/':
-		'cycle, loop, chain, trail, unchained, readonly, safe, GET, LoopException, SafetyException, io:readonly',
+	'/userspace/api/exposing/':
+		'exposition, route, method, io:output, anonymous, 204, 401, trailing slash, authorities, mount, context routes, endpoint',
+	'/userspace/api/routes/':
+		'route, variable, :id, wildcard, *, **, forwarding, intermediate, directive, inheritance, isolated, shortcut, yaml anchor, Route not found',
+	'/userspace/api/methods/':
+		'GET, POST, PUT, PATCH, DELETE, HEAD, endpoint, assign, input, 201, 404, 405, 422, 501, io:readonly, idempotency-key, once',
+	'/userspace/api/queries/':
+		'query, criteria, rsql, sort, omit, limit, range, search, projection, parameters, token, stop, 400, 410, paging, filter',
+	'/userspace/api/protocol/':
+		'content-type, accept, json, yaml, msgpack, form, status, 406, 422, 500, 503, debug, ray, traceparent, server-timing, multipart, ACK, FIN, heartbeat, cors, preflight, retry-after',
+	'/userspace/api/io/':
+		'io:output, io:input, io:status, io:throttle, io:readonly, key, requests, interval, condition, 429, retry-after, Unexpected input',
+	'/userspace/api/mapping/':
+		'map:headers, map:segments, map:languages, map:language, map:authority, map:claims, map:buffer, map:stream, map:instance, require:header, require:headers, accept-language, webhook, signature, vary',
+	'/userspace/api/caching/':
+		'cache:control, cache:exact, cache-control, max-age, private, no-store, etag, if-none-match, 304, VERSION, if-match, 412, Invalid ETag',
+	'/userspace/api/streams/':
+		'stream, multipart, entry, removed, token, stop, flow:compose, map:stream, accept, produces, limit, 413, 415, map:instance, stateful, 504, flow:fetch',
+	'/userspace/api/storages/':
+		'storages, context.storages, entry, put, head, get, delete, TYPE_MISMATCH, NOT_ACCEPTABLE, NOT_FOUND, fs, tmp, s3, spaces, cloudinary, transformations, variant, toa conceal, toa npm',
+	'/userspace/api/files/':
+		'octets:context, octets:put, octets:get, octets:head, octets:delete, accept, limit, location, trust, meta, content-id, content-attributes, content-location, 413, 415, range, 206, upload, download',
+	'/userspace/api/workflows/':
+		'workflow, octets:workflow, step, unit, task:, entry, parameters, steps, 201, 202, flow:compose, status, completed, exception',
+	'/userspace/api/realtime/':
+		'realtime, key, expose, realtime:stream, sync, /realtime/:id/, literal key, token, heartbeat, FIN, reconnect, streams, expire, redis, live updates',
+	'/userspace/api/procedures/':
+		'rpc, json-rpc, /.rpc, procedure, params, query, batch, notification, -32601, -32602, -32000, -32001, -32603, -32002, no-store',
+	'/userspace/api/tools/':
+		'mcp, /.mcp, mcp:tool, help:method, tools/list, tools/call, instructions, anonymous, origins, hosts, manifest, oauth, structuredContent, isError, readOnlyHint, model context protocol',
+	'/userspace/api/discovery/':
+		'OPTIONS, /.discovery, Allow, selection, input, output, errors, help:node, help:method, help:route, help:query, title, description, introspection',
+	'/userspace/api/running/':
+		'toa mono, toa serve exposition, --service, 8000, 8004, authorities, class, annotations, resources, protocol, h2c, /.ready, ip, censor, 451, debug, dev:stub, dev:sleep, dev:faulty, dev:throw',
 
-	'/userspace/flow/pulses/':
-		'cadence, pulse, cycle, intervals, scope, replica, group, periodic, sweep, atomicity',
-	'/userspace/flow/schedules/':
-		'cadence, schedule, cron, zone, overdue, at, region, calendar, timezone',
-	'/userspace/flow/delays/':
-		'cadence, delay, context.delay, cancel, interval, overdue, unchained, discreteness, regions, redis',
-	'/userspace/flow/collection-streams/':
-		'stream, scope, token, window, limit, stop, removed, entry, images, migration, replica set, sync',
-	'/userspace/flow/streamed-calls/':
-		'stream, streamed reply, streamed input, generator, readable, http binding, unreachable, upload',
-	'/userspace/flow/stateful/':
-		'stateful, instance, state, process memory, addressee, abandoned, timeout, signal, TOA_INSTANCE, addressed',
+	'/userspace/access/identities/':
+		'identity, sign up, sign in, auth:incept, auth:assert, auth:delegate, auth:id, GET /identity/, POST /identity/, Basic, Token, transient identity, guest, account, 401, 403',
+	'/userspace/access/credentials/':
+		'password, username, identity.basic, INVALID_PASSWORD, INVALID_USERNAME, EXISTS, PRINCIPAL_LOCKED, principal, pepper, rounds, bouncer, 429, retry-after, credentials, schemes, Basic, Bearer, Code, OTP',
+	'/userspace/access/tokens/':
+		'token, authorization header, lifetime, refresh, identity.tokens, keys, toa key, rotation, paseto, custom token, scopes, permissions, INACCESSIBLE_SCOPE, kid, revoke, sign out, cache.ttl',
+	'/userspace/access/federation/':
+		'federation, OpenID Connect, OIDC, Google, Apple, id_token, Bearer, Code, identity.federation, trust, iss, aud, sub, assert, secret, signature, map:claims, principal, TRUST, NOT_FOUND',
+	'/userspace/access/passwordless/':
+		'OTP, one-time password, code, email, identity.otp.issue, map:authority, map:segments, lifetime, attempts, passkey, WebAuthn, challenge, navigator.credentials, origin, residence, verification, FAILED, MISS',
+	'/userspace/access/access/':
+		'access, authorization, auth:id, auth:anonymous, auth:anyone, auth:role, auth:rule, auth:input, auth:scheme, auth:delegate, auth:claims, auth:echo, owner, 401, 403, isolated, inheritance, private, protected',
+	'/userspace/access/roles/':
+		'role, staff, admin, auth:role, principal, system, grant, revoke, delegation, system:identity:roles, INACCESSIBLE_SCOPE, hierarchy, scope, ban, PUT /identity/bans/, refresh',
+	'/userspace/access/authorities/':
+		'authority, authorities, domain, host, map:authority, ip, client address, x-forwarded-for, bouncer, censor, 451, country, require:header, require:headers, if-match, 400',
+	'/userspace/access/oauth/':
+		'OAuth, OAuth 2.1, authorization server, consent, PKCE, client, registration, client_id, identity.clients, identity.grants, code, access token, Bearer, scope, resource, audience, MCP, AI, well-known, invalid_grant',
+	'/userspace/access/reference/':
+		'reference, /identity/, resources, directives, annotation, configuration, secrets, statuses, 401, 403, 409, 422, 429, 451, system roles',
 
-	'/userspace/gateway/exposing/':
-		'exposition, gateway, http, route, authorities, mount, trailing slash, context routes, anonymous, io:output',
-	'/userspace/gateway/routes/':
-		'resource tree, routes, route variables, wildcard, forwarding, isolated, intermediate node, directives, inheritance, shortcuts, yaml anchors',
-	'/userspace/gateway/methods/':
-		'methods, GET, POST, PUT, PATCH, DELETE, HEAD, endpoint, input, query, readonly, io:readonly, status, 422, idempotency-key, once',
-	'/userspace/gateway/queries/':
-		'query, criteria, rsql, sort, omit, limit, range, search, projection, parameters, id, token, stop, pagination',
-	'/userspace/gateway/protocol/':
-		'content negotiation, json, yaml, msgpack, form, status codes, errors, debug, ray, traceparent, tracing, server-timing, multipart, ACK, FIN, cors, preflight, 503',
-	'/userspace/gateway/io/':
-		'io:output, io:input, io:status, io:throttle, output permissions, input permissions, throttling, rate limit, 429, retry-after, 204',
-	'/userspace/gateway/mapping/':
-		'map:headers, map:segments, map:language, map:languages, map:authority, map:claims, map:buffer, require:header, require:headers, authority, accept-language, webhook, vary',
-	'/userspace/gateway/caching/':
-		'cache:control, cache:exact, cache-control, private, no-store, vary, etag, if-none-match, 304, if-match, version, 412, optimistic concurrency',
-	'/userspace/gateway/streams/':
-		'reply stream, collection stream, token, entry, removed, stop, flow:compose, flow:fetch, map:stream, produces, accept, limit, map:instance, stateful, 410, 504',
-	'/userspace/gateway/storages/':
-		'storages, blob, entry, checksum, put, get, head, delete, provider, fs, tmp, s3, spaces, cloudinary, transformations, variants, secrets, toa conceal, toa npm',
-	'/userspace/gateway/files/':
-		'octets, octets:context, octets:put, octets:get, octets:head, octets:delete, octets:workflow, upload, download, location, accept, limit, trust, content-id, content-attributes, content-location, workflow, task, 413, 415',
-	'/userspace/gateway/workflows/':
-		'workflow, octets:put, octets:delete, octets:workflow, step, unit, task, multipart, flow:compose, storage, entry, 201, 202',
-	'/userspace/gateway/realtime/':
-		'realtime, realtime:stream, key, expose, literal key, events, sync, token, heartbeat, reconnect, stream, redis, expire, push',
-	'/userspace/gateway/procedures/':
-		'json-rpc, rpc, procedure, /.rpc, batch, notification, params, error codes, -32001, names',
-	'/userspace/gateway/tools/':
-		'mcp, model context protocol, mcp:tool, tools, /.mcp, instructions, anonymous, origins, hosts, manifest, icons, oauth, readOnlyHint, tools/list, tools/call',
-	'/userspace/gateway/discovery/':
-		'discovery, introspection, OPTIONS, /.discovery, help:node, help:method, help:route, help:query, schema, selection, allow, title, description',
-	'/userspace/gateway/running/':
-		'toa mono, toa compose, toa serve, port 8000, authorities, ingress, class, annotations, resources, protocol, h2c, probe, /.ready, ip, censor, 451, dev:stub, dev:sleep, dev:faulty, dev:throw, debug',
+	'/userspace/platform/extensions/':
+		'extension, aspect, annotation, manifest key, context.toa.yaml, @environment, extensions, annotations, ports',
+	'/userspace/platform/configuration/':
+		'configuration, secret, format secret, unwrap, REDACTED, toa conceal, defaults, schema, TOA_CONFIGURATION, toa serve configuration',
+	'/userspace/platform/configuration-values/':
+		'configuration.values, runtime configuration, epoch, revision, reset, originator, system:configuration:get, system:configuration:create, /.configuration/',
+	'/userspace/platform/stash/':
+		'stash, cache, redis, context.stash, ioredis, store, fetch, multi, pipeline, expiry',
+	'/userspace/platform/shared-decisions/':
+		'context.atom, atomicity, lock, slots, onassigned, meter, rate limit, replicas, partitioning, AbortSignal',
+	'/userspace/platform/logs/':
+		'logs, context.logs, debug, info, warn, error, level, trace_id, console, otlp, loki, Process failed',
+	'/userspace/platform/traces/':
+		'traces, span, context.span, trace_id, traceparent, sample, rate, tempo, otlp, TOA_BOOT_TRACE',
+	'/userspace/platform/metrics/':
+		'metrics, context.metrics, counter, histogram, gauge, labels, UNDECLARED, buckets, interval, prometheus, toa.operation.duration',
+	'/userspace/platform/exporting-telemetry/':
+		'telemetry, otlp, exporter, endpoint, headers, cooldown, timeout, grafana, tempo, loki, prometheus, readiness, /.ready',
+	'/userspace/platform/introspection/':
+		'introspection, topology, nodes, edges, graph, system:introspection, /.introspection/, interval, threshold, ui',
+	'/userspace/platform/connectors/':
+		'connectors, storage, binding, bridge, mongodb, amqp, http, bash, replica set, images, sources, storage null',
+	'/userspace/platform/addresses-and-credentials/':
+		'addresses, credentials, pointer, mongodb, amqp, stash, secrets, toa conceal, toa export secrets, toa env, username, password',
+	'/userspace/platform/own-extensions/':
+		'own extension, Factory, aspect, context.aspects, Connector, deployment, manifest, tenant, service, resident, pause, definition.js',
 
-	'/userspace/identity/identities/':
-		'identity, sign in, sign up, sign out, transient identity, auth:incept, auth:assert, inception, echo',
-	'/userspace/identity/credentials/':
-		'authorization header, Basic, password, username, pepper, principal, credentials, bouncer, 401, 429',
-	'/userspace/identity/tokens/':
-		'Token, refresh, lifetime, toa key, key rotation, revocation, custom token, scopes, permissions, identity.keys',
-	'/userspace/identity/federation/':
-		'OIDC, OpenID Connect, Bearer, id_token, trust, issuer, audience, authorization code, map:claims, Google, Apple',
-	'/userspace/identity/passwordless/':
-		'OTP, one-time password, passwordless, passkey, WebAuthn, challenge, identity.otp.issue',
-	'/userspace/identity/access/':
-		'authorization, auth directives, auth:id, auth:role, auth:rule, auth:claims, auth:scheme, auth:input, auth:delegate, 401, 403',
-	'/userspace/identity/roles/':
-		'roles, scopes, hierarchy, delegation, grant, revoke, principal, system role, ban',
-	'/userspace/identity/authorities/':
-		'authorities, host, domain, map:authority, ip, client address, censor, 451, require:header',
-	'/userspace/identity/oauth/':
-		'OAuth 2.1, authorization server, consent, PKCE, dynamic client registration, access token, audience, grants, MCP',
-	'/userspace/identity/reference/':
-		'reference, routes, configuration, annotation, secrets, status codes',
-
-	'/userspace/services/extensions/':
-		'extensions, aspects, annotations, manifest key, context annotation, @environment, shortcuts, predefined extensions, ports',
-	'/userspace/services/configuration/':
-		'configuration, schema, defaults, context.configuration, secrets, format secret, unwrap, toa conceal, TOA_CONFIGURATION, toa serve configuration',
-	'/userspace/services/configuration-values/':
-		'configuration values, runtime configuration, reset, epoch, revision, originator, system:configuration, /.configuration, configuration.values.created',
-	'/userspace/services/fetch/':
-		'fetch, context.fetch, HTTP client, external API, retry, attempts, Retry-After, toa.fetch',
-	'/userspace/services/stash-and-state/':
-		'stash, cache, redis, ioredis, store, fetch, context.stash, state, context.state, process memory',
-	'/userspace/services/shared-decisions/':
-		'atomicity, context.atom, lock, slots, partitioning, onassigned, meter, rate limit, redlock, replicas',
-	'/userspace/services/logs/':
-		'logs, context.logs, severity, level, trace_id, console exporter, otlp, Loki, Process failed, structured logging',
-	'/userspace/services/traces/':
-		'traces, spans, context.span, sampling, sample, rate, traceparent, Tempo, TOA_BOOT_TRACE',
-	'/userspace/services/metrics/':
-		'metrics, context.metrics, counter, gauge, histogram, labels, buckets, cardinality, UNDECLARED, toa.operation.duration, Prometheus',
-	'/userspace/services/exporting-telemetry/':
-		'telemetry, OTLP, exporters, endpoint, cooldown, headers, readiness probe, /.ready, Grafana, Tempo, Loki, Prometheus, trace to logs',
-	'/userspace/services/introspection/':
-		'introspection, topology, nodes, edges, /.introspection, system:introspection, interval, threshold',
-	'/userspace/services/connectors/':
-		'connectors, storage, mongodb, replica set, images, storage null, bindings, amqp, sources, http binding, bridge, bash',
-	'/userspace/services/addresses-and-credentials/':
-		'pointer, addresses, URL, credentials, secrets, toa conceal, toa export secrets, default namespace, shards',
-	'/userspace/services/own-extensions/':
-		'custom extension, Factory, aspect, context.aspects, tenant, service, resident, pause, custom storage, definition.js',
-
-	'/userspace/running/context/':
-		'context.toa.yaml, name, version, runtime, registry, annotations, shortcuts, amqp, mongodb, events, atomicity, outbox, inbox, addressed',
-	'/userspace/running/environments/':
-		'environment, @env, suffix, toa env, local, .env, --dev, --interactive, chain, staging:production, TOA_ENV',
-	'/userspace/running/compositions/':
-		'compositions, replicas, resources, cpu, memory, services, ports, evicted, mono, TOA_SERVICES, base image',
-	'/userspace/running/contracts/':
-		'contracts, map, .map.json, toa map, version, files, ignore, rolling upgrade, compatibility, foreign events',
-	'/userspace/running/testing/':
-		'testing, stage, userland, component, composition, remote, invoke, shutdown, integration tests, --kill, --dock',
-	'/userspace/running/cli/':
+	'/userspace/shipping/context/':
+		'context, context.toa.yaml, name, version, registry, runtime, amqp, mongodb, annotations, addresses, events, atomicity, outbox, inbox',
+	'/userspace/shipping/environments/':
+		'environment, suffix, local, staging, production, toa env, chain, derived, TOA_ENV, context.env',
+	'/userspace/shipping/compositions/':
+		'compositions, replicas, resources, cpu, memory, services, ports, evicted, mono, base image, TOA_SERVICES',
+	'/userspace/shipping/deployment/':
+		'deploy, toa deploy, kubernetes, helm, kubectl, namespace, wait, dry, ingress, hosts, labels, mono, pipeline, rollout',
+	'/userspace/shipping/images/':
+		'images, registry, docker, toa build, toa push, tags, platforms, credentials, base image, build, run, arguments, npm, published, retention',
+	'/userspace/shipping/secrets/':
+		'secrets, toa export secrets, toa conceal, toa reveal, credentials, username, password, .env, dev, interactive, configuration secrets',
+	'/userspace/shipping/upgrades/':
+		'release, upgrade, rolling update, contract, compatibility, toa map, .map.json, version, files, ignore, migrations, rollback, evicted',
+	'/userspace/shipping/regions/':
+		'regions, convergence, priority, rank, federation, toa export convergence, replica set, context.region, REGION, unique index',
+	'/userspace/shipping/halt/':
+		'halt, maintenance, introspection, signals, seconds, quiescence, grace, system:halt, pause, resume, preflight, 503, retry-after',
+	'/userspace/shipping/operating/':
+		'operating, troubleshooting, kubectl, logs, Process failed, parked, comq.parked, AMQP message discarded, outbox, unpublished events, rollback, toa shell, TOA_SUFFIX, alerts',
+	'/userspace/shipping/cli/':
 		'cli, toa, env, map, npm, compose, mono, serve, call, types, export, build, push, deploy, conceal, reveal, key, shell',
-	'/userspace/running/deployment/':
-		'deployment, toa deploy, kubernetes, helm, rollout, probes, ingress, migrations, mono, --wait, --dry, namespace',
-	'/userspace/running/images/':
-		'images, registry, docker, tags, platforms, credentials, base image, build, run, arguments, published, toa build, toa push',
-	'/userspace/running/secrets/':
-		'secrets, variables, toa conceal, toa reveal, toa export secrets, credentials, pointer, addresses, .env, username, password',
-	'/userspace/running/regions/':
-		'regions, convergence, priority, rank, federation, toa export convergence, context.region, REGION, multi-region, conflicts',
-	'/userspace/running/halt/':
-		'halt, quiescence, introspection, signals, pause, resume, maintenance, 503, retry-after, system:halt',
-	'/userspace/running/operating/':
-		'operating, operations, parked, dead letter, outbox, toa shell, rollback, logs, labels, TOA_SUFFIX, alerts'
+
+	'/userspace/patterns/call-event-task/':
+		'call, event, task, receiver, synchronous, asynchronous, eventual consistency, at least once, decision, consequence, webhook, coupling',
+	'/userspace/patterns/reply-first/':
+		'background, slow, long-running, own event, receiver, assign, realtime, sync, progress, failure, invoice, pending',
+	'/userspace/patterns/events/':
+		'event design, condition, origin, state, edge, trailers, payload, contract, receiver, request, updated, sync, loop, subscriber',
+	'/userspace/patterns/repeats/':
+		'idempotent, duplicate, repeat, redelivery, at least once, once, idempotency-key, DISCARD, natural key, associated, charge twice, dedupe',
+	'/userspace/patterns/concurrency/':
+		'race, concurrency, retry, compare-and-set, double spend, lost update, version, if-match, 409, 412, lock, stock, oversell',
+	'/userspace/patterns/order/':
+		'order, ordering, out of order, VERSION, stale, obsolete, signal, re-read, monotonic, copy, late event',
+	'/userspace/patterns/refusing/':
+		'error, refusal, exception, guard, schema, DISCARD, 422, 400, 403, 404, 500, validation, invariant, receiver, task',
+	'/userspace/patterns/ownership/':
+		'ownership, owner, copy, mirror, read model, eventual consistency, snapshot, associated, blank, counter, limit, quota, voucher, OBSOLETE',
+	'/userspace/patterns/processes/':
+		'saga, process, steps, status, compensation, refund, rollback, orchestration, choreography, report back, forward, cancelled, workflow',
+	'/userspace/patterns/reservations/':
+		'reservation, hold, release, settle, charge, held, balance, double spend, ref, key, idempotent, compensation, guard, stock, overspend',
+	'/userspace/patterns/time/':
+		'time, expiry, deadline, timeout, pulse, sweep, cadence, delay, schedule, reconcile, watchdog, monthly, allowance, grace period, cron, timer',
+	'/userspace/patterns/gateways/':
+		'gateway, external service, payment provider, api key, secret, stub, UNAVAILABLE, context.fetch, metadata, composition, anti-corruption',
+	'/userspace/patterns/webhooks/':
+		'webhook, notification, signature, map:buffer, anonymous, duplicate, retry for days, natural key, associated, origin null, once, deduplicate',
+	'/userspace/patterns/mirrors/':
+		'mirror, subscription, membership, signal, merge, out of order, re-read, timestamp, OBSOLETE, sync, expires, eventual consistency',
+	'/userspace/patterns/wallet/':
+		'wallet, balance, ledger, double spend, once, concurrency, guard, trailers, VERSION, unique index, entity, minor units, refund, audit',
+	'/userspace/patterns/payments/':
+		'payment, checkout, top-up, redirect url, webhook, confirmation, reconciliation, pulse, exactly once, idempotent, realtime, receipt, refund'
 };

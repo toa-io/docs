@@ -12,14 +12,13 @@ export const anchors: Record<string, Record<string, string>> = {
 	},
 
 	'/userspace/': {
-		'Chapter I. Getting Started': 'start',
-		'Chapter II. Components': 'components',
-		'Chapter III. Reliability': 'reliability',
-		'Chapter IV. Time and Flow': 'flow',
-		'Chapter V. The Gateway': 'gateway',
-		'Chapter VI. Identity and Access': 'identity',
-		'Chapter VII. Platform Services': 'services',
-		'Chapter VIII. Running': 'running'
+		'Chapter I. First Steps': 'start',
+		'Chapter II. Business Logic': 'logic',
+		'Chapter III. The API': 'api',
+		'Chapter IV. Users and Access': 'access',
+		'Chapter V. Platform Features': 'platform',
+		'Chapter VI. Shipping': 'shipping',
+		'Chapter VII. Patterns': 'patterns'
 	},
 
 	'/model/foundations/separation/': {
