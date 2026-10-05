@@ -12,6 +12,8 @@ const content = path.resolve('content');
 
 export default defineConfig({
 	resolve: { alias: { $content: content } },
+	// the documents are outside of what the dev server serves by default
+	server: { fs: { allow: [content] } },
 	plugins: [
 		tailwindcss(),
 		sveltekit({
