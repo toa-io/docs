@@ -39,8 +39,8 @@
 		{@render children()}
 	</article>
 	{#if page.url.pathname !== '/'}
-		<footer class="mt-auto mb-4 pt-4 text-sm text-muted-foreground">
-			<div class="my-4 flex items-center [&>div]:flex-1">
+		<footer class="mt-auto pt-8 pb-4 text-sm text-muted-foreground">
+			<div class="flex items-center [&>div]:flex-1">
 				<div class="text-left">
 					{#if previous}
 						<a href={previous.href} class="no-underline!">← {previous.title}</a>
