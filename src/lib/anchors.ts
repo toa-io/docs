@@ -1,7 +1,7 @@
 // laconic anchors of the headings, by route and heading text;
 // a heading that is not listed keeps the slug of its text
 export const anchors: Record<string, Record<string, string>> = {
-	'/': {
+	'/model/': {
 		'Chapter I. Foundations': 'foundations',
 		'Chapter II. Basics': 'basics',
 		'Chapter III. Reliability': 'reliability',
@@ -11,11 +11,11 @@ export const anchors: Record<string, Record<string, string>> = {
 		'Chapter VII. Running': 'running'
 	},
 
-	'/foundations/separation/': {
+	'/model/foundations/separation/': {
 		'The problem': 'problem',
 		'Operations and declarations': 'declarations'
 	},
-	'/foundations/overview/': {
+	'/model/foundations/overview/': {
 		'Logical architecture: components': 'components',
 		'Physical architecture: compositions': 'compositions',
 		'Monolith and microservices become configurations': 'configurations',
@@ -27,7 +27,7 @@ export const anchors: Record<string, Record<string, string>> = {
 		'Integration through events': 'events',
 		'The gateway is another physical edge': 'gateway'
 	},
-	'/foundations/component/': {
+	'/model/foundations/component/': {
 		State: 'state',
 		Behavior: 'behavior',
 		Operations: 'operations',
@@ -37,11 +37,11 @@ export const anchors: Record<string, Record<string, string>> = {
 		'Context: the gateway to the runtime': 'context',
 		'Events: publishing and receiving changes': 'events'
 	},
-	'/foundations/prototype/': {
+	'/model/foundations/prototype/': {
 		'The generic prototype': 'generic',
 		'Refinement and forwarding': 'refinement'
 	},
-	'/foundations/consistency/': {
+	'/model/foundations/consistency/': {
 		'One atomic change at a time': 'atomicity',
 		'Agreement through events': 'agreement',
 		'What the runtime guarantees': 'guarantees',
@@ -49,21 +49,21 @@ export const anchors: Record<string, Record<string, string>> = {
 		'Why this model': 'why'
 	},
 
-	'/basics/calls/': {
+	'/model/basics/calls/': {
 		'Input/Query Segregation': 'segregation',
 		Input: 'input',
 		Query: 'query',
 		'Local calls': 'local',
 		'Calls nobody waits for': 'tasks'
 	},
-	'/basics/replies/': {
+	'/model/basics/replies/': {
 		Output: 'output',
 		'An error is an answer': 'errors',
 		'An exception is a failure': 'exceptions',
 		'What a caller receives': 'caller',
 		'Why the distinction matters': 'why'
 	},
-	'/basics/operations/': {
+	'/model/basics/operations/': {
 		Types: 'types',
 		Computation: 'computation',
 		Effect: 'effect',
@@ -72,7 +72,7 @@ export const anchors: Record<string, Record<string, string>> = {
 		'Genuine operations': 'genuine',
 		'Leaving the model': 'unmanaged'
 	},
-	'/basics/state/': {
+	'/model/basics/state/': {
 		'Identity and creation': 'identity',
 		Validity: 'validity',
 		'Versions and concurrency': 'versions',
@@ -80,7 +80,7 @@ export const anchors: Record<string, Record<string, string>> = {
 		'Deciding not to commit': 'discard',
 		Deletion: 'deletion'
 	},
-	'/basics/events/': {
+	'/model/basics/events/': {
 		'A consequence of a commit': 'commit',
 		Condition: 'condition',
 		Payload: 'payload',
@@ -91,13 +91,13 @@ export const anchors: Record<string, Record<string, string>> = {
 		'Events from outside': 'external',
 		'What delivery promises': 'delivery'
 	},
-	'/basics/context/': {
+	'/model/basics/context/': {
 		'What it provides': 'provides',
 		Aspects: 'aspects',
 		'Why one door': 'why'
 	},
 
-	'/reliability/delivery/': {
+	'/model/reliability/delivery/': {
 		'Distributed exception handling': 'exceptions',
 		'Two situations': 'situations',
 		'When somebody is waiting': 'waiting',
@@ -106,42 +106,42 @@ export const anchors: Record<string, Record<string, string>> = {
 		'What this asks of an operation': 'obligation',
 		Summary: 'summary'
 	},
-	'/reliability/outbox/': {
+	'/model/reliability/outbox/': {
 		'The gap': 'gap',
 		'One commit': 'commit',
 		'What a subscriber can rely on': 'guarantees',
 		'What it requires': 'requirements',
 		'More than events': 'beyond'
 	},
-	'/reliability/idempotency/': {
+	'/model/reliability/idempotency/': {
 		'The identity of a call': 'identity',
 		'What once gives': 'once',
 		'What it does not give': 'limits',
 		'Which operations can ask': 'eligibility',
 		'Calls from outside': 'external'
 	},
-	'/reliability/tasks/': {
+	'/model/reliability/tasks/': {
 		'Why not just an event': 'why',
 		'What an accepted task can count on': 'guarantees',
 		'What it asks': 'obligation',
 		'What cannot be a task': 'limits',
 		'Tasks and component boundaries': 'boundaries'
 	},
-	'/reliability/continuity/': {
+	'/model/reliability/continuity/': {
 		'Picking up where it failed': 'resuming',
 		'What a step is': 'step',
 		'What can be counted on': 'guarantees',
 		'What cannot': 'limits',
 		'Where it applies': 'scope'
 	},
-	'/reliability/chains/': {
+	'/model/reliability/chains/': {
 		Cycles: 'cycles',
 		'Chains that may only read': 'read-only',
 		'What a chain is not': 'limits',
 		'The common idea': 'idea'
 	},
 
-	'/flow/cadence/': {
+	'/model/flow/cadence/': {
 		Pulse: 'pulse',
 		'Spreading a cycle': 'spreading',
 		'What a pulse promises': 'pulse-guarantees',
@@ -151,7 +151,7 @@ export const anchors: Record<string, Record<string, string>> = {
 		'What a delay promises': 'delay-guarantees',
 		'Time and chains': 'chains'
 	},
-	'/flow/collections/': {
+	'/model/flow/collections/': {
 		'Reading without holding': 'reading',
 		'Reading again': 'changes',
 		Windows: 'windows',
@@ -159,21 +159,21 @@ export const anchors: Record<string, Record<string, string>> = {
 		'What it requires': 'requirements',
 		'Streams and events': 'events'
 	},
-	'/flow/streams/': {
+	'/model/flow/streams/': {
 		'Streamed replies': 'replies',
 		'Streamed input': 'input',
 		'What streamed input gives up': 'tradeoffs',
 		'When it is the right tool': 'usage',
 		'The general point': 'idea'
 	},
-	'/flow/stateful/': {
+	'/model/flow/stateful/': {
 		'Addressing a process': 'addressing',
 		'What an addressed call gives up': 'tradeoffs',
 		'Keeping the exception small': 'containment',
 		'Process memory': 'memory'
 	},
 
-	'/edge/resources/': {
+	'/model/edge/resources/': {
 		'Declaring resources': 'declaration',
 		'Requests become calls': 'requests',
 		'What a route may narrow': 'narrowing',
@@ -181,7 +181,7 @@ export const anchors: Record<string, Record<string, string>> = {
 		'The gateway is not the application': 'gateway',
 		'A description of itself': 'description'
 	},
-	'/edge/identity/': {
+	'/model/edge/identity/': {
 		Identity: 'identity',
 		Authentication: 'authentication',
 		'Linking identities to the domain': 'linking',
@@ -191,7 +191,7 @@ export const anchors: Record<string, Record<string, string>> = {
 		'Why operations do not check': 'why',
 		'Acting on behalf of an identity': 'delegation'
 	},
-	'/edge/realtime/': {
+	'/model/edge/realtime/': {
 		Keys: 'keys',
 		'What a stream exposes': 'exposure',
 		'Serving a stream': 'serving',
@@ -199,14 +199,14 @@ export const anchors: Record<string, Record<string, string>> = {
 		'What a reader can rely on': 'guarantees',
 		'Realtime and collection streams': 'collections'
 	},
-	'/edge/procedures/': {
+	'/model/edge/procedures/': {
 		Procedures: 'procedures',
 		Tools: 'tools',
 		'The same rules': 'rules',
 		'Describing what is offered': 'description',
 		'Why this is possible': 'why'
 	},
-	'/edge/files/': {
+	'/model/edge/files/': {
 		Storages: 'storages',
 		Entries: 'entries',
 		'Uploads without operations': 'uploads',
@@ -215,14 +215,14 @@ export const anchors: Record<string, Record<string, string>> = {
 		'Files and streamed calls': 'streams'
 	},
 
-	'/platform/extensions/': {
+	'/model/platform/extensions/': {
 		'What an extension contributes': 'contributions',
 		'Two places to declare': 'declaration',
 		'Supplied extensions': 'supplied',
 		'The same mechanism for everyone': 'mechanism',
 		'Extensions and guarantees': 'guarantees'
 	},
-	'/platform/configuration/': {
+	'/model/platform/configuration/': {
 		'A contract for configuration': 'contract',
 		'Layers of values': 'layers',
 		Secrets: 'secrets',
@@ -230,7 +230,7 @@ export const anchors: Record<string, Record<string, string>> = {
 		'Schema changes': 'schema',
 		'What configuration is not': 'limits'
 	},
-	'/platform/telemetry/': {
+	'/model/platform/telemetry/': {
 		Traces: 'traces',
 		Sampling: 'sampling',
 		Logs: 'logs',
@@ -238,20 +238,20 @@ export const anchors: Record<string, Record<string, string>> = {
 		'Where it goes': 'export',
 		'What the application adds': 'application'
 	},
-	'/platform/introspection/': {
+	'/model/platform/introspection/': {
 		'Declared and observed': 'topology',
 		'What is and is not collected': 'collected',
 		Uses: 'uses',
 		'Why the platform can do this': 'why'
 	},
-	'/platform/atomicity/': {
+	'/model/platform/atomicity/': {
 		Partitioning: 'partitioning',
 		Locking: 'locking',
 		Metering: 'metering',
 		'What does not need them': 'unneeded',
 		'Their limits': 'limits'
 	},
-	'/platform/connectors/': {
+	'/model/platform/connectors/': {
 		'Bridges: how logic runs': 'bridges',
 		'Storages: how state is kept': 'storages',
 		'Bindings: how calls travel': 'bindings',
@@ -259,7 +259,7 @@ export const anchors: Record<string, Record<string, string>> = {
 		'An opinionated default': 'default'
 	},
 
-	'/running/environments/': {
+	'/model/running/environments/': {
 		'One source': 'source',
 		'Variation by suffix': 'suffix',
 		'What an environment can change': 'variation',
@@ -267,7 +267,7 @@ export const anchors: Record<string, Record<string, string>> = {
 		'The local environment': 'local',
 		'Environments and guarantees': 'guarantees'
 	},
-	'/running/compositions/': {
+	'/model/running/compositions/': {
 		'The unit of deployment and scale': 'unit',
 		'What grouping decides': 'grouping',
 		Replicas: 'replicas',
@@ -275,7 +275,7 @@ export const anchors: Record<string, Record<string, string>> = {
 		'Leaving things out': 'omission',
 		Resources: 'resources'
 	},
-	'/running/contracts/': {
+	'/model/running/contracts/': {
 		'A contract is given, not asked for': 'contract',
 		Versions: 'versions',
 		'While two versions serve': 'rolling',
@@ -283,7 +283,7 @@ export const anchors: Record<string, Record<string, string>> = {
 		'Events from outside': 'external',
 		'Why this matters': 'why'
 	},
-	'/running/deployment/': {
+	'/model/running/deployment/': {
 		'What a process needs': 'process',
 		'The supplied tooling': 'tooling',
 		'Derived, not written': 'derived',
@@ -293,7 +293,7 @@ export const anchors: Record<string, Record<string, string>> = {
 		'The single-process form': 'single-process',
 		'What deployment does not decide': 'limits'
 	},
-	'/running/regions/': {
+	'/model/running/regions/': {
 		'The same model, one level up': 'model',
 		'Resolving concurrent writes': 'conflicts',
 		'What convergence guarantees': 'guarantees',
@@ -301,7 +301,7 @@ export const anchors: Record<string, Record<string, string>> = {
 		'Regions and environments': 'environments',
 		'What it requires': 'requirements'
 	},
-	'/running/halt/': {
+	'/model/running/halt/': {
 		'What a halt does': 'effect',
 		'What it gives': 'guarantees',
 		'What it refuses to do': 'refusals',

@@ -1,33 +1,57 @@
 <script lang="ts">
-	import Intro from '$docs/0.intro.md';
+	import { BookText, Brain, ChevronRight } from '@lucide/svelte';
+	import { Button } from '#lib/components/ui/button/index.ts';
+	import * as Item from '#lib/components/ui/item/index.ts';
+	import GitHub from '#lib/GitHub.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
 </script>
 
-<section class="flex flex-col gap-6 py-12 md:flex-row md:items-center md:gap-10 md:py-20">
-	<div class="md:flex-1">
-		<p class="text-6xl font-bold tracking-tight md:text-7xl">{data.home.name}</p>
-		<p class="mt-2 text-xl text-muted-foreground">{data.home.title}</p>
-	</div>
-	<p class="border-muted-foreground/25 text-lg text-balance md:flex-1 md:border-l md:pl-10">
-		{data.home.motto}
-	</p>
-</section>
+<main class="flex flex-1 flex-col justify-center gap-12">
+	<header class="flex flex-col gap-6 md:flex-row md:items-center md:gap-10">
+		<div class="md:flex-1">
+			<h1 class="text-6xl font-bold tracking-tight md:text-7xl">{data.home.name}</h1>
+			<p class="mt-2 text-xl text-muted-foreground">{data.home.title}</p>
+		</div>
+		<p class="text-lg text-balance text-foreground md:flex-1 md:border-l md:pl-10">
+			{data.home.motto}
+		</p>
+	</header>
 
-<div class="intro space-y-4">
-	<Intro />
-</div>
+	<nav class="flex items-center justify-between gap-4">
+		<div class="grid w-fit auto-cols-fr gap-4 sm:grid-flow-col">
+			<Item.Root variant="outline">
+				{#snippet child({ props })}
+					<a href="/model/" {...props} class={[props.class, 'no-underline hover:text-foreground']}>
+						<Item.Media variant="icon"><Brain /></Item.Media>
+						<Item.Content>
+							<Item.Title>Mental model</Item.Title>
+							<Item.Description>Concepts and guarantees</Item.Description>
+						</Item.Content>
+						<Item.Actions><ChevronRight class="size-4" /></Item.Actions>
+					</a>
+				{/snippet}
+			</Item.Root>
 
-<style>
-	/* the title and the motto are shown in the hero */
-	.intro :global(> h1:first-child),
-	.intro :global(> h1:first-child + p) {
-		display: none;
-	}
+			<Item.Root variant="outline" aria-disabled="true" class="opacity-50">
+				<Item.Media variant="icon"><BookText /></Item.Media>
+				<Item.Content>
+					<Item.Title>Application</Item.Title>
+					<Item.Description>How to use</Item.Description>
+				</Item.Content>
+				<Item.Actions><ChevronRight class="size-4" /></Item.Actions>
+			</Item.Root>
+		</div>
 
-	/* the links of the contents are bold in the source */
-	.intro :global(strong:has(> a)) {
-		font-weight: normal;
-	}
-</style>
+		<Button
+			variant="ghost"
+			size="icon-lg"
+			href="https://github.com/toa-io/toa"
+			aria-label="Toa on GitHub"
+			class="no-underline"
+		>
+			<GitHub />
+		</Button>
+	</nav>
+</main>

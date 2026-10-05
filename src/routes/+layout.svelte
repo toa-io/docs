@@ -6,34 +6,33 @@
 
 	let { children, data }: LayoutProps = $props();
 
-	const article = $derived(data.articles.find((a) => a.href === page.url.pathname));
-	const title = $derived(
-		article === undefined ? `${data.home.name}: ${data.home.title}` : `${article.title} · Toa`
-	);
-	const description = $derived(article?.description ?? data.home.motto);
-	const keywords = $derived(article?.keywords ?? data.home.keywords);
+	const meta = $derived.by(() => {
+		const article = data.articles.find((a) => a.href === page.url.pathname);
+
+		if (article !== undefined) return { ...article, title: `${article.title} · Toa` };
+		if (page.url.pathname === '/model/')
+			return { ...data.model, title: `${data.model.title} · Toa` };
+
+		return {
+			title: `${data.home.name}: ${data.home.title}`,
+			description: data.home.motto,
+			keywords: data.home.keywords
+		};
+	});
 </script>
 
 <svelte:head>
 	<link rel="icon" href="/favicon.ico" sizes="32x32" />
 	<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-	<title>{title}</title>
-	<meta property="og:title" content={title} />
-	<meta name="description" content={description} />
-	<meta property="og:description" content={description} />
-	<meta name="keywords" content={keywords} />
+	<title>{meta.title}</title>
+	<meta property="og:title" content={meta.title} />
+	<meta name="description" content={meta.description} />
+	<meta property="og:description" content={meta.description} />
+	<meta name="keywords" content={meta.keywords} />
 </svelte:head>
 
 <div class="container mx-auto flex min-h-dvh max-w-5xl flex-col p-4">
-	<article class="flex-1">
-		{#if article}
-			<a href={article.chapter.href} class="text-sm text-muted-foreground no-underline!">
-				{article.chapter.number}
-				{article.chapter.title}
-			</a>
-		{/if}
-		{@render children()}
-	</article>
+	{@render children()}
 	<Footer.Place />
 </div>

@@ -11,12 +11,12 @@ const chapters = Array.from(intro.matchAll(/^## (Chapter (\w+)\. (.+))$/gm), (ma
 	index: match.index,
 	number: match[2],
 	title: match[3],
-	href: `/#${anchors['/'][match[1]]}`
+	href: `/model/#${anchors['/model/'][match[1]]}`
 }));
 
 const articles: Article[] = Array.from(intro.matchAll(LINK), (match) => {
 	const [, title, chapter, article, summary] = match;
-	const href = `/${chapter}/${article}/`;
+	const href = `/model/${chapter}/${article}/`;
 	const description = summary.replace(/\s+/g, ' ').trim();
 	const { number, title: name, href: anchor } = chapters.findLast((c) => c.index < match.index)!;
 
@@ -37,4 +37,12 @@ const [, motto] = /^\*\*([^*]+)\*\*$/m.exec(intro) ?? [];
 
 const home = { name, title, motto, keywords: keywords['/'] };
 
-export const load: LayoutServerLoad = () => ({ home, articles });
+// the contents of the documentation
+const model = {
+	title: 'Diving into the Mental Model',
+	description:
+		'What Toa is: the foundational concepts of the runtime, its main mechanisms, and how they fit together.',
+	keywords: keywords['/model/']
+};
+
+export const load: LayoutServerLoad = () => ({ home, model, articles });

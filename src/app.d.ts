@@ -6,6 +6,7 @@ declare global {
 		// interface Locals {}
 		interface PageData {
 			home: { name: string; title: string; motto: string; keywords: string };
+			model: { title: string; description: string; keywords: string };
 			articles: Article[];
 		}
 		// interface PageState {}

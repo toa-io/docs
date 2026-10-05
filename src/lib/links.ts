@@ -32,7 +32,7 @@ const anchor = (route: string, slug: string) => slugs[route]?.[slug] ?? slug;
  * Rehype plugin, expects the headings to have ids (`rehype-slug`):
  *
  * - rewrites relative links between documentation files (`../basics/1.calls.md#local-calls`)
- *   to site routes (`/basics/calls/#local`)
+ *   to site routes (`/model/basics/calls/#local`)
  * - gives the headings below the first level their laconic anchors, and finds their subtitles
  */
 export function links({ root }: { root: string }) {
@@ -102,15 +102,15 @@ function emphasis(node: Node) {
 	return text.value;
 }
 
-// `basics/1.calls.md` → `/basics/calls/`, `0.intro.md` → `/`
+// `basics/1.calls.md` → `/model/basics/calls/`, `0.intro.md` → `/model/`
 function route(file: string) {
-	if (file === '0.intro.md') return '/';
+	if (file === '0.intro.md') return '/model/';
 
 	const segments = file
 		.split(path.sep)
 		.map((segment) => segment.replace(/^\d+\./, '').replace(/\.md$/, ''));
 
-	return `/${segments.join('/')}/`;
+	return `/model/${segments.join('/')}/`;
 }
 
 // calls `fn` with each node and the element that follows it
