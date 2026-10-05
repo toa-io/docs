@@ -21,7 +21,7 @@
 	<meta property="og:title" content={title} />
 </svelte:head>
 
-<div class="container mx-auto flex min-h-dvh max-w-3xl flex-col p-4">
+<div class="container mx-auto flex min-h-dvh max-w-5xl flex-col p-4">
 	<article class="flex-1">
 		{@render children()}
 	</article>
