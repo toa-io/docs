@@ -211,3 +211,11 @@ pre[class*='language-'] code {
 .token.class-name {
 	color: var(--code-function);
 }
+
+mark.review-mark {
+	@apply cursor-pointer rounded-[0.15em] bg-sky-200/70 text-inherit dark:bg-sky-500/30;
+}
+
+mark.review-mark.pending {
+	@apply bg-yellow-200/70 dark:bg-yellow-500/25;
+}

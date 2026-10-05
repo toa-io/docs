@@ -2,6 +2,7 @@
 	import './layout.css';
 	import { page } from '$app/state';
 	import * as Footer from '#lib/footer/index.ts';
+	import Review from '#lib/review/Review.svelte';
 	import type { LayoutProps } from './$types';
 
 	let { children, data }: LayoutProps = $props();
@@ -37,6 +38,13 @@
 </svelte:head>
 
 <div class="container mx-auto flex min-h-dvh max-w-5xl flex-col p-4">
-	{@render children()}
+	<div data-review-root class="contents">
+		{@render children()}
+	</div>
 	<Footer.Place />
 </div>
+
+<!-- a reviewer selects text and comments on it, where the documents are being written -->
+{#if import.meta.env.DEV}
+	<Review />
+{/if}
