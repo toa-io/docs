@@ -173,13 +173,9 @@ pre[class*='language-'] code {
 	color: var(--code-function);
 }
 
-/* the link to a section, hangs to the left of its heading */
-:is(h2, h3, h4, h5, h6):has(> a.anchor) {
-	@apply relative;
-}
-
+/* the link to a section, before the text of its heading */
 a.anchor {
-	@apply absolute top-1/2 right-full -translate-y-1/2 pr-1 font-normal text-muted-foreground/50 no-underline;
+	@apply pr-1 font-normal text-muted-foreground/50 no-underline;
 }
 
 a.anchor:hover {
