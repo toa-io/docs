@@ -7,11 +7,11 @@
 
 <section class="flex flex-col gap-6 py-12 md:flex-row md:items-center md:gap-10 md:py-20">
 	<div class="md:flex-1">
-		<p class="text-6xl font-bold tracking-tight md:text-7xl">{data.hero.name}</p>
-		<p class="mt-2 text-xl text-muted-foreground">{data.hero.title}</p>
+		<p class="text-6xl font-bold tracking-tight md:text-7xl">{data.home.name}</p>
+		<p class="mt-2 text-xl text-muted-foreground">{data.home.title}</p>
 	</div>
 	<p class="border-muted-foreground/25 text-lg text-balance md:flex-1 md:border-l md:pl-10">
-		{data.hero.motto}
+		{data.home.motto}
 	</p>
 </section>
 

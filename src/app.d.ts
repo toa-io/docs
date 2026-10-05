@@ -5,6 +5,7 @@ declare global {
 		// interface Error {}
 		// interface Locals {}
 		interface PageData {
+			home: { name: string; title: string; motto: string; keywords: string };
 			articles: Article[];
 		}
 		// interface PageState {}
@@ -14,6 +15,8 @@ declare global {
 	interface Article {
 		href: string;
 		title: string;
+		description: string;
+		keywords: string;
 	}
 }
 

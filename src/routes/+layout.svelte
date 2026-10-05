@@ -10,7 +10,11 @@
 	const article = $derived(data.articles[index]);
 	const previous = $derived(index > 0 ? data.articles[index - 1] : undefined);
 	const next = $derived(index === -1 ? undefined : data.articles[index + 1]);
-	const title = $derived(article === undefined ? 'Toa' : `${article.title} · Toa`);
+	const title = $derived(
+		article === undefined ? `${data.home.name}: ${data.home.title}` : `${article.title} · Toa`
+	);
+	const description = $derived(article?.description ?? data.home.motto);
+	const keywords = $derived(article?.keywords ?? data.home.keywords);
 </script>
 
 <svelte:head>
@@ -19,6 +23,9 @@
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 	<title>{title}</title>
 	<meta property="og:title" content={title} />
+	<meta name="description" content={description} />
+	<meta property="og:description" content={description} />
+	<meta name="keywords" content={keywords} />
 </svelte:head>
 
 <div class="container mx-auto flex min-h-dvh max-w-5xl flex-col p-4">
