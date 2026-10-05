@@ -30,6 +30,12 @@
 
 <div class="container mx-auto flex min-h-dvh max-w-5xl flex-col p-4">
 	<article class="flex-1">
+		{#if article}
+			<a href={article.chapter.href} class="text-sm text-muted-foreground no-underline!">
+				{article.chapter.number}
+				{article.chapter.title}
+			</a>
+		{/if}
 		{@render children()}
 	</article>
 	{#if page.url.pathname !== '/'}

@@ -15,6 +15,7 @@ declare global {
 	interface Article {
 		href: string;
 		title: string;
+		chapter: { number: string; title: string; href: string };
 		description: string;
 		keywords: string;
 	}

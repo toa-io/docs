@@ -5,22 +5,34 @@ import type { LayoutServerLoad } from './$types';
 // the introduction is the table of contents: it defines titles, summaries and the reading order
 const LINK = /\[([^\]]+)\]\(([\w-]+)\/\d+\.([\w-]+)\.md\)\*\*\s+— ([^]*?)(?=\n\d+\. |\n\n|$)/g;
 
-const articles: Article[] = Array.from(
-	intro.matchAll(LINK),
-	([, title, chapter, article, summary]) => {
-		const href = `/${chapter}/${article}/`;
-		const description = summary.replace(/\s+/g, ' ').trim();
+// `## Chapter I. Foundations`
+const chapters = Array.from(intro.matchAll(/^## (Chapter (\w+)\. (.+))$/gm), (match) => ({
+	index: match.index,
+	number: match[2],
+	title: match[3],
+	// the heading's id, as rehype-slug makes it
+	href: `/#${match[1]
+		.toLowerCase()
+		.replace(/[^\w\s-]/g, '')
+		.replace(/\s/g, '-')}`
+}));
 
-		if (!(href in keywords)) throw new Error(`No keywords for ${href}`);
+const articles: Article[] = Array.from(intro.matchAll(LINK), (match) => {
+	const [, title, chapter, article, summary] = match;
+	const href = `/${chapter}/${article}/`;
+	const description = summary.replace(/\s+/g, ' ').trim();
+	const { number, title: name, href: anchor } = chapters.findLast((c) => c.index < match.index)!;
 
-		return {
-			href,
-			title,
-			description: description[0].toUpperCase() + description.slice(1),
-			keywords: keywords[href]
-		};
-	}
-);
+	if (!(href in keywords)) throw new Error(`No keywords for ${href}`);
+
+	return {
+		href,
+		title,
+		chapter: { number, title: name, href: anchor },
+		description: description[0].toUpperCase() + description.slice(1),
+		keywords: keywords[href]
+	};
+});
 
 // `# Toa: Composable Application Runtime` followed by the `**motto**`
 const [, name, title] = /^# ([^:\n]+): (.+)$/m.exec(intro) ?? [];

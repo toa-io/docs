@@ -75,7 +75,7 @@ ul {
 }
 
 table {
-	@apply block max-w-full border-collapse overflow-x-auto;
+	@apply block border-collapse overflow-x-auto;
 }
 
 th,
@@ -100,6 +100,12 @@ hr {
 
 	article {
 		@apply space-y-4;
+	}
+
+	/* the text column is narrower than the page: headings hang out of it to the left */
+	article > :not(h1, h2, h3, h4, h5, h6, a, section, .intro),
+	.intro > :not(h1, h2, h3, h4, h5, h6) {
+		@apply mx-auto max-w-3xl;
 	}
 
 	blockquote {
