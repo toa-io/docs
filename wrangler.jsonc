@@ -8,6 +8,12 @@
 		"binding": "ASSETS",
 		"directory": ".svelte-kit/cloudflare"
 	},
+	// the index of the documentation the search asks, see README
+	"ai_search": [{ "binding": "SEARCH", "instance_name": "toa-docs" }],
+	// searches of one address, a minute
+	"ratelimits": [
+		{ "name": "SEARCH_LIMIT", "namespace_id": "1001", "simple": { "limit": 20, "period": 60 } }
+	],
 	"observability": {
 		"enabled": true
 	}

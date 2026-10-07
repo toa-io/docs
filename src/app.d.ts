@@ -11,7 +11,27 @@ declare global {
 			articles: Article[];
 		}
 		// interface PageState {}
-		// interface Platform {}
+		// what `wrangler.jsonc` binds
+		interface Platform {
+			env: {
+				// the index of the documentation
+				SEARCH?: {
+					search(request: {
+						query: string;
+						ai_search_options?: {
+							retrieval?: {
+								retrieval_type?: 'vector' | 'keyword' | 'hybrid';
+								max_num_results?: number;
+							};
+						};
+					}): Promise<{
+						// `key` is the address of the page a passage is of
+						chunks: { score: number; text: string; item: { key: string } }[];
+					}>;
+				};
+				SEARCH_LIMIT: { limit(options: { key: string }): Promise<{ success: boolean }> };
+			};
+		}
 	}
 
 	interface Section {
@@ -43,6 +63,18 @@ declare global {
 		summary: string;
 		description: string;
 		keywords: string;
+	}
+
+	// an article found by a search
+	interface SearchResult {
+		href: string;
+		title: string;
+		// the names of the section and of the chapter the article is in
+		section: string;
+		chapter: string;
+		// the passage that matched
+		excerpt: string;
+		score: number;
 	}
 }
 

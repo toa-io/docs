@@ -3,6 +3,8 @@
 	import { page } from '$app/state';
 	import * as Footer from '#lib/footer/index.ts';
 	import Review from '#lib/review/Review.svelte';
+	import Search from '#lib/search/Search.svelte';
+	import Trigger from '#lib/search/Trigger.svelte';
 	import type { LayoutProps } from './$types';
 
 	let { children, data }: LayoutProps = $props();
@@ -17,6 +19,13 @@
 		const section = data.sections[page.url.pathname];
 
 		if (section !== undefined) return { ...section, title: `${section.title} · Toa` };
+
+		if (page.url.pathname === '/search/')
+			return {
+				title: 'Search · Toa',
+				description: 'Search the Toa documentation.',
+				keywords: data.home.keywords
+			};
 
 		return {
 			title: `${data.home.name}: ${data.home.title}`,
@@ -37,12 +46,17 @@
 	<meta name="keywords" content={meta.keywords} />
 </svelte:head>
 
+<!-- shown where a page puts nothing of its own in the middle of the footer -->
+<Footer.Center><Trigger /></Footer.Center>
+
 <div class="container mx-auto flex min-h-dvh max-w-5xl flex-col p-4">
 	<div data-review-root class="contents">
 		{@render children()}
 	</div>
 	<Footer.Place />
 </div>
+
+<Search />
 
 <!-- a reviewer selects text and comments on it, where the documents are being written -->
 {#if import.meta.env.DEV}
