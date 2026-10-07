@@ -15,6 +15,9 @@ npm run dev
 `npm run deploy` builds every document into a static page and uploads the pages to Cloudflare.
 Nothing reads the documents at runtime, and nothing that is built is committed.
 
+A file in `static/immutable` is served at `/immutable/…` and cached for a month, as `_headers`
+says, so it never changes: a new version of it takes a new name.
+
 ## Agent skill
 
 `skills/toa` is the `userspace` section as an [agent skill](https://skills.sh): `0.intro.md` is
