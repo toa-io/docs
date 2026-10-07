@@ -115,7 +115,12 @@ What every article agrees on:
   is not pending with `NOT_PENDING`; an article in which a later state can be cancelled shows
   that change.
 - **`store.orders.approve`** declares no input (`input: null`) unless the article adds one, and
-  then the article shows the declaration.
+  then the article shows the declaration. It is `concurrency: retry` while it calls nothing, as
+  `start/3.component.md` writes it, and `concurrency: none` from `logic/3.errors.md` on, where
+  it calls `billing.wallets.debit`.
+- **A transition declared `concurrency: retry` calls no operation that declares `once`**: the
+  runtime refuses the call (`UnrepeatableException`). Such a transition is `concurrency: none`,
+  or the call is made by a receiver of its event, or from an effect.
 - An article may show less of a component than another does, and never something that
   contradicts it.
 
