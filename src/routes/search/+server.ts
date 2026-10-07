@@ -12,5 +12,7 @@ export const GET: RequestHandler = async ({ url, getClientAddress }) => {
 
 	if (q.length < MIN) error(400, `A query is at least ${MIN} characters`);
 
-	return json(await search(q, getClientAddress()), { headers });
+	return json(await search(q, getClientAddress(), url.searchParams.get('probe') ?? ''), {
+		headers
+	});
 };
