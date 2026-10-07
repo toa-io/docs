@@ -10,3 +10,6 @@ bun.lockb
 
 # Documents are not formatted: approved content is immutable
 /content/
+
+# The skill is generated
+/skills/

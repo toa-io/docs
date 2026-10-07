@@ -149,6 +149,11 @@ Text enclosed in `<!--todo-->...<!--/todo-->` contains notes or guidance for fut
 notes and their contents unchanged, and do not act on them unless the user explicitly asks.
 Routine requests to process files do not activate these notes.
 
+## The skill
+
+`skills/toa` is generated from `userspace` by the pre-commit hook (`npm run skill`); never edit
+the skill itself.
+
 # Process
 
 Commit or push changes only when the user explicitly requests it.

@@ -26,7 +26,7 @@ const slugs = Object.fromEntries(
 	})
 );
 
-const anchor = (route: string, slug: string) => slugs[route]?.[slug] ?? slug;
+export const anchor = (route: string, slug: string) => slugs[route]?.[slug] ?? slug;
 
 /**
  * Rehype plugin, expects the headings to have ids (`rehype-slug`):
@@ -103,7 +103,7 @@ function emphasis(node: Node) {
 }
 
 // `model/basics/1.calls.md` → `/model/basics/calls/`, `model/0.intro.md` → `/model/`
-function route(file: string) {
+export function route(file: string) {
 	const segments = file
 		.split(path.sep)
 		.filter((segment) => segment !== '0.intro.md')

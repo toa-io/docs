@@ -4,11 +4,15 @@
 	import { House } from '@lucide/svelte';
 	import { page } from '$app/state';
 	import * as Footer from '#lib/footer/index.ts';
+	import { Clipboard } from '#lib/components/clipboard/index.ts';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
 
 	const intros = { model: Model, userspace: Userspace };
+
+	// installs the section as an agent skill, see `skills`
+	const SKILL = 'npx skills add toa-io/docs';
 
 	const section = $derived(data.sections[page.url.pathname]);
 	const Intro = $derived(intros[page.params.section as keyof typeof intros]);
@@ -21,6 +25,12 @@
 
 	<div class={['intro space-y-4', page.params.section]}>
 		<Intro />
+
+		{#if page.params.section === 'userspace'}
+			<div class="skill">
+				<Clipboard text={SKILL} label={SKILL} variant="outline" size="sm" class="font-mono" />
+			</div>
+		{/if}
 	</div>
 </article>
 
@@ -34,6 +44,29 @@
 	/* and the motto of the runtime is shown on the home page */
 	.intro.model :global(> h1:first-child + p) {
 		display: none;
+	}
+
+	/* the skill is shown after the opening of the introduction, before its first chapter */
+	.intro.userspace {
+		display: flex;
+		flex-direction: column;
+
+		/* what is centered in the text column keeps its width */
+		> :global(*) {
+			width: 100%;
+		}
+
+		> :global(:is(h2, hgroup)),
+		> :global(:is(h2, hgroup) ~ *) {
+			order: 2;
+		}
+
+		> .skill {
+			display: flex;
+			justify-content: center;
+			order: 1;
+			margin-block: 1.5rem 2rem;
+		}
 	}
 
 	/*

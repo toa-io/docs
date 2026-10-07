@@ -12,6 +12,7 @@
 	--secondary: oklch(0.97 0 0);
 	--secondary-foreground: oklch(0.205 0 0);
 	--destructive: oklch(0.577 0.245 27);
+	--constructive: oklch(0.6637 0.161 150.99);
 	--border: oklch(0.922 0 0);
 	--input: oklch(0.922 0 0);
 	--ring: oklch(0.708 0 0);
@@ -59,6 +60,7 @@
 	--color-secondary: var(--secondary);
 	--color-secondary-foreground: var(--secondary-foreground);
 	--color-destructive: var(--destructive);
+	--color-constructive: var(--constructive);
 	--color-border: var(--border);
 	--color-input: var(--input);
 	--color-ring: var(--ring);
