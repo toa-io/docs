@@ -68,7 +68,8 @@ async function passages(query: string) {
 					match_threshold: THRESHOLD,
 					max_num_results: PASSAGES
 				},
-				reranking: { enabled: true, match_threshold: THRESHOLD }
+				// the order is the reranker's, and what it thinks little of is still shown, last
+				reranking: { enabled: true, match_threshold: 0 }
 			}
 		});
 
