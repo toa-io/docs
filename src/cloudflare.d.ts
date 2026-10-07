@@ -19,6 +19,12 @@ declare module 'cloudflare:workers' {
 				chunks: { score: number; text: string; item: { key: string } }[];
 			}>;
 		};
+		AI: {
+			run(
+				model: string,
+				input: { text: string[]; pooling?: 'mean' | 'cls' }
+			): Promise<{ data: number[][] }>;
+		};
 		SEARCH_LIMIT: { limit(options: { key: string }): Promise<{ success: boolean }> };
 	};
 }
