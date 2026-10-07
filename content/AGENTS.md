@@ -151,8 +151,8 @@ Routine requests to process files do not activate these notes.
 
 ## The skill
 
-`skills/toa` is generated from `userspace`. After changing anything in `userspace`, run
-`npm run skill`; never edit the skill itself.
+`skills/toa` is generated from `userspace` by the pre-commit hook (`npm run skill`); never edit
+the skill itself.
 
 # Process
 
