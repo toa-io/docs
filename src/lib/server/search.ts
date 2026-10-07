@@ -25,7 +25,11 @@ export async function search(
 	const env = platform?.env;
 
 	// where the index is not bound: a dev server without the credentials of Cloudflare
-	if (env?.SEARCH === undefined) error(503, 'Search is unavailable');
+	if (env?.SEARCH === undefined)
+		error(
+			503,
+			`Search is unavailable: ${env === undefined ? 'no env' : Object.keys(env).join(' ')}`
+		);
 
 	const { success } = await env.SEARCH_LIMIT.limit({ key: address });
 
