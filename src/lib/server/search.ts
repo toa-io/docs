@@ -10,6 +10,9 @@ const LIMIT = 8;
 const TITLE = 0.25;
 const EXCERPT = 320;
 
+// the score under which a passage has nothing to do with the query
+const WORTH = 0.05;
+
 // how alike a passage is to the query at least, 0 to 1
 const THRESHOLD = 0.2;
 
@@ -53,7 +56,10 @@ export async function search(query: string, address: string): Promise<SearchResu
 		});
 	}
 
-	return [...results.values()].sort((a, b) => b.score - a.score).slice(0, LIMIT);
+	const sorted = [...results.values()].sort((a, b) => b.score - a.score);
+
+	// the best is shown whatever its score is, the rest if they are any good
+	return sorted.filter((result, index) => index === 0 || result.score >= WORTH).slice(0, LIMIT);
 }
 
 async function passages(query: string) {
