@@ -1,0 +1,4 @@
+# what is in `static/immutable` never changes: a new version of a file takes a new name
+/immutable/*
+  ! Cache-Control
+  Cache-Control: public, max-age=2592000, immutable

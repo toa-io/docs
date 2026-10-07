@@ -15,6 +15,9 @@ npm run dev
 `npm run deploy` builds every document into a static page and uploads the pages to Cloudflare.
 Nothing reads the documents at runtime, and nothing that is built is committed.
 
+A file in `static/immutable` is served at `/immutable/…` and cached for a month, as `_headers`
+says, so it never changes: a new version of it takes a new name.
+
 ## Agent skill
 
 `skills/toa` is the `userspace` section as an [agent skill](https://skills.sh): `0.intro.md` is
@@ -27,7 +30,7 @@ npx skills update            # get a newer version
 
 That command clones this repository, so the skill is committed, unlike the pages. It is
 generated, never edited: the pre-commit hook writes it (`npm run skill`) and adds it to the
-commit, and `npm run lint`, which runs on every pull request, fails while it is stale.
+commit, and `npm run lint` fails while it is stale.
 
 ## Search
 
