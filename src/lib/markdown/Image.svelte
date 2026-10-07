@@ -5,13 +5,18 @@
 		dark?: string;
 		alt?: string;
 		title?: string;
+		/** how wide it is drawn, where that is not the text column */
+		width?: number;
+		/** its proportions, `width / height`: the room kept for it while it loads */
+		ratio?: string;
 	}
 
-	let { src, dark, alt = '', title }: Props = $props();
+	let { src, dark, alt = '', title, width, ratio }: Props = $props();
 
 	// the text column, and twice that for a dense screen
-	const WIDTHS = [768, 1536];
-	const SIZES = '(min-width: 48rem) 48rem, 100vw';
+	const COLUMN = 768;
+	const widths = $derived([width ?? COLUMN, (width ?? COLUMN) * 2]);
+	const sizes = $derived(width === undefined ? '(min-width: 48rem) 48rem, 100vw' : `${width}px`);
 	const UPLOAD = '/image/upload/';
 
 	const hosted = (url: string) => url.includes('res.cloudinary.com') && url.includes(UPLOAD);
@@ -21,20 +26,21 @@
 		hosted(url) ? url.replace(UPLOAD, `${UPLOAD}f_auto,q_auto,w_${width}/`) : url;
 
 	const srcset = (url: string) =>
-		hosted(url) ? WIDTHS.map((width) => `${sized(url, width)} ${width}w`).join(', ') : url;
+		hosted(url) ? widths.map((width) => `${sized(url, width)} ${width}w`).join(', ') : url;
 </script>
 
 <picture class="block">
 	{#if dark}
-		<source media="(prefers-color-scheme: dark)" srcset={srcset(dark)} sizes={SIZES} />
+		<source media="(prefers-color-scheme: dark)" srcset={srcset(dark)} {sizes} />
 	{/if}
 	<img
-		src={sized(src, WIDTHS[1])}
+		src={sized(src, widths[1])}
 		srcset={srcset(src)}
-		sizes={SIZES}
+		{sizes}
 		{alt}
 		{title}
 		loading="lazy"
 		class={{ 'w-full': hosted(src), melting: dark !== undefined }}
+		style:aspect-ratio={ratio}
 	/>
 </picture>

@@ -36,6 +36,54 @@
 		display: none;
 	}
 
+	/*
+	 * An introduction that opens with an illustrated text: the picture stands beside the title as
+	 * well, from the top of the page. The title, the text and the picture are laid out as one grid.
+	 */
+	@media (min-width: 48rem) {
+		article:has(:global(.intro > .illustrated)) {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) auto;
+			/* a picture taller than what stands beside it leaves the room under the text */
+			grid-template-rows: auto auto 1fr;
+			column-gap: 2rem;
+			align-content: start;
+
+			> :global(*) {
+				grid-column: 1 / -1;
+			}
+
+			> a {
+				grid-area: 1 / 1;
+				justify-self: start;
+				/* a grid item takes the space set between blocks, which a link in a line did not */
+				margin-block: 0;
+			}
+
+			> h1 {
+				grid-area: 2 / 1;
+			}
+
+			> .intro,
+			:global(.intro > .illustrated) {
+				display: contents;
+			}
+
+			:global(.intro > *) {
+				grid-column: 1 / -1;
+			}
+
+			:global(.illustrated-text) {
+				grid-area: 3 / 1;
+				margin-bottom: 1rem;
+			}
+
+			:global(.illustrated-picture) {
+				grid-area: 1 / 2 / 4 / 3;
+			}
+		}
+	}
+
 	/* the links of the contents are bold in the source */
 	.intro :global(strong:has(> a)) {
 		font-weight: normal;

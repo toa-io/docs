@@ -68,6 +68,11 @@
 		@apply border-border outline-ring/50;
 	}
 
+	/* an illustration hangs past the edge of the page */
+	html {
+		@apply overflow-x-clip;
+	}
+
 	body {
 		@apply bg-background text-foreground;
 	}
@@ -147,8 +152,8 @@
 	}
 
 	/* the text column is narrower than the page: headings hang out of it to the left */
-	article > :not(h1, h2, h3, h4, h5, h6, hgroup, a, .intro),
-	.intro > :not(h1, h2, h3, h4, h5, h6, hgroup) {
+	article > :not(h1, h2, h3, h4, h5, h6, hgroup, a, .intro, .illustrated),
+	.intro > :not(h1, h2, h3, h4, h5, h6, hgroup, .illustrated) {
 		@apply mx-auto max-w-3xl;
 	}
 
