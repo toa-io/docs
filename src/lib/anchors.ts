@@ -31,7 +31,7 @@ export const anchors: Record<string, Record<string, string>> = {
 		'Monolith and microservices become configurations': 'configurations',
 		'One composition: monolithic deployment': 'monolith',
 		'One composition per component: microservice deployment': 'microservices',
-		'Mixed compositions: fit the workload': 'mixed',
+		'Mixed compositions: macroservice deployment': 'mixed',
 		'The Context: application and environment': 'context',
 		'Location-transparent calls': 'calls',
 		'Integration through events': 'events',
@@ -75,6 +75,11 @@ export const anchors: Record<string, Record<string, string>> = {
 	},
 	'/model/basics/operations/': {
 		Types: 'types',
+		Transition: 'transition',
+		Creation: 'creation',
+		'Optimistic concurrency control': 'occ',
+		'Pessimistic concurrency control': 'pcc',
+		'Deciding not to commit': 'discard',
 		Computation: 'computation',
 		Effect: 'effect',
 		Scope: 'scope',
@@ -83,11 +88,10 @@ export const anchors: Record<string, Record<string, string>> = {
 		'Leaving the model': 'unmanaged'
 	},
 	'/model/basics/state/': {
-		'Identity and creation': 'identity',
-		Validity: 'validity',
-		'Versions and concurrency': 'versions',
+		'The schema': 'schema',
+		'System properties': 'system',
 		Guards: 'guards',
-		'Deciding not to commit': 'discard',
+		'Associated entities': 'associated',
 		Deletion: 'deletion'
 	},
 	'/model/basics/events/': {
@@ -123,7 +127,7 @@ export const anchors: Record<string, Record<string, string>> = {
 		'What it requires': 'requirements',
 		'More than events': 'beyond'
 	},
-	'/model/reliability/idempotency/': {
+	'/model/reliability/inbox/': {
 		'The identity of a call': 'identity',
 		'What once gives': 'once',
 		'What it does not give': 'limits',

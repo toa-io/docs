@@ -28,8 +28,9 @@ export const keywords: Record<string, string> = {
 	'/model/reliability/delivery/':
 		'delivery, distributed exception handling, retries, at-least-once',
 	'/model/reliability/outbox/':
-		'committed events, transactional outbox, at-least-once delivery, unordered events, recovery',
-	'/model/reliability/idempotency/': 'idempotency, call identity, repeated calls, deduplication',
+		'transactional outbox, committed events, at-least-once delivery, unordered events, recovery',
+	'/model/reliability/inbox/':
+		'transactional inbox, once, idempotency, call identity, repeated calls, deduplication',
 	'/model/reliability/tasks/': 'tasks, asynchronous calls, background work, delivery guarantees',
 	'/model/reliability/continuity/': 'continuity, resumable effects, steps, recovery',
 	'/model/reliability/chains/': 'call chains, call path, cycle detection, read-only chains',
