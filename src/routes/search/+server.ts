@@ -7,10 +7,10 @@ export const prerender = false;
 export const trailingSlash = 'always';
 
 // answers a request that does not prefer HTML: the page beside answers one that does
-export const GET: RequestHandler = async ({ url, platform, getClientAddress }) => {
+export const GET: RequestHandler = async ({ url, getClientAddress }) => {
 	const q = query(url);
 
 	if (q.length < MIN) error(400, `A query is at least ${MIN} characters`);
 
-	return json(await search(platform, q, getClientAddress()), { headers });
+	return json(await search(q, getClientAddress()), { headers });
 };
