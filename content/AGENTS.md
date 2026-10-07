@@ -108,19 +108,25 @@ What every article agrees on:
   `loyalty` and `billing.memberships` are `associated`: nothing creates a wallet when an account
   is created, and reading one never written answers its blank.
   `patterns/9.associated.md` is where that is reasoned out.
-- **`billing.wallets.debit`** takes `{ amount, ref }` and refuses with `INSUFFICIENT_FUNDS`;
-  `credit` takes `{ amount, type, ref }`. An article before the wallet is built in full may show
-  `debit` with `amount` alone, and says that it is the smallest form.
+- **`billing.wallets.debit`** takes `{ amount, ref }`, both required, and refuses with
+  `INSUFFICIENT_FUNDS`. It is idempotent by `ref` and declares no `once`: the wallet keeps what
+  it took in `paid` (an object, `ref` to amount, `{}` in the blank), and a debit whose `ref` is
+  there sets `DISCARD` and answers as the first did. That is so from its smallest form, in
+  `logic/3.errors.md`; no article shows a debit with `amount` alone. `patterns/16.wallet.md`
+  states what remembering the refs costs. No runtime feature expires them.
+- **`billing.wallets.credit`** takes `{ amount, type, ref }` and declares `once`. It is reached
+  by a receiver, a staff route or an effect, never by a transition that retries.
 - **`store.orders.cancel`** takes `{ reason }`, puts it in `TRAILERS`, and refuses an order that
   is not pending with `NOT_PENDING`; an article in which a later state can be cancelled shows
   that change.
 - **`store.orders.approve`** declares no input (`input: null`) unless the article adds one, and
-  then the article shows the declaration. It is `concurrency: retry` while it calls nothing, as
-  `start/3.component.md` writes it, and `concurrency: none` from `logic/3.errors.md` on, where
-  it calls `billing.wallets.debit`.
+  then the article shows the declaration. It is `concurrency: retry` in every article, and from
+  `logic/3.errors.md` on it calls `billing.wallets.debit` with `ref: entry.id`.
 - **A transition declared `concurrency: retry` calls no operation that declares `once`**: the
-  runtime refuses the call (`UnrepeatableException`). Such a transition is `concurrency: none`,
-  or the call is made by a receiver of its event, or from an effect.
+  runtime refuses the call (`UnrepeatableException`). The way out the articles lead with is to
+  make what is called safe to repeat by keying it with what it is for, as `debit` is, so that it
+  needs no `once`. A receiver of the transition's event and an effect are the other ways;
+  `concurrency: none` is mentioned as rarely right, and no article chooses it for this.
 - An article may show less of a component than another does, and never something that
   contradicts it.
 
