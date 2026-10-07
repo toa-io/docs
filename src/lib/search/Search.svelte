@@ -84,7 +84,13 @@
 	shouldFilter={false}
 	class="top-[12%] sm:max-w-xl"
 >
-	<Command.Input bind:value={query} aria-label="Search the documentation" />
+	<!-- Safari of a phone zooms into a field whose text is smaller than 16px -->
+	<Command.Input
+		bind:value={query}
+		aria-label="Search the documentation"
+		class="text-base md:text-sm"
+		loading={status === 'loading'}
+	/>
 
 	<!-- without results there is only the field -->
 	{#if status === 'failed'}

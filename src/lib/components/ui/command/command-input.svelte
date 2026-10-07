@@ -2,14 +2,16 @@
 	import { Command as CommandPrimitive } from 'bits-ui';
 	import * as InputGroup from '#lib/components/ui/input-group/index.js';
 	import SearchIcon from '@lucide/svelte/icons/search';
+	import { Spinner } from '#lib/components/ui/spinner/index.js';
 	import { cn } from '#lib/utils.js';
 
 	let {
 		ref = $bindable(null),
 		class: className,
 		value = $bindable(''),
+		loading = false,
 		...restProps
-	}: CommandPrimitive.InputProps = $props();
+	}: CommandPrimitive.InputProps & { loading?: boolean } = $props();
 </script>
 
 <div data-slot="command-input-wrapper" class="p-1">
@@ -32,5 +34,10 @@
 		<InputGroup.Addon>
 			<SearchIcon class="size-4 shrink-0 opacity-50" />
 		</InputGroup.Addon>
+		{#if loading}
+			<InputGroup.Addon align="inline-end">
+				<Spinner aria-label="Searching" />
+			</InputGroup.Addon>
+		{/if}
 	</InputGroup.Root>
 </div>
