@@ -89,6 +89,7 @@
 		bind:value={query}
 		aria-label="Search the documentation"
 		class="text-base md:text-sm"
+		loading={status === 'loading'}
 	/>
 
 	<!-- without results there is only the field -->
