@@ -4,6 +4,10 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="text-scale" content="scale" />
+		<!-- the keys shown for the search are those of the reader's keyboard -->
+		<script>
+			document.documentElement.classList.toggle('mac', /Mac|iPhone|iPad/.test(navigator.platform));
+		</script>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

@@ -26,7 +26,9 @@ export default defineConfig({
 						? undefined
 						: true
 			},
-			adapter: adapter(),
+			// The search asks an index that is at Cloudflare only, and a dev server that reaches it
+			// does not start without credentials: it does with `REMOTE=true`, see README
+			adapter: adapter({ platformProxy: { remoteBindings: process.env.REMOTE === 'true' } }),
 			preprocess: [
 				mdsvex({
 					extensions: ['.svx', '.md'],
