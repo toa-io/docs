@@ -2,6 +2,7 @@
 	import './layout.css';
 	import { page } from '$app/state';
 	import * as Footer from '#lib/footer/index.ts';
+	import Review from '#lib/review/Review.svelte';
 	import type { LayoutProps } from './$types';
 
 	let { children, data }: LayoutProps = $props();
@@ -13,8 +14,9 @@
 		const chapter = data.chapters.find((c) => c.href === page.url.pathname);
 
 		if (chapter !== undefined) return { ...chapter, title: `${chapter.title} · Toa` };
-		if (page.url.pathname === '/model/')
-			return { ...data.model, title: `${data.model.title} · Toa` };
+		const section = data.sections[page.url.pathname];
+
+		if (section !== undefined) return { ...section, title: `${section.title} · Toa` };
 
 		return {
 			title: `${data.home.name}: ${data.home.title}`,
@@ -36,6 +38,13 @@
 </svelte:head>
 
 <div class="container mx-auto flex min-h-dvh max-w-5xl flex-col p-4">
-	{@render children()}
+	<div data-review-root class="contents">
+		{@render children()}
+	</div>
 	<Footer.Place />
 </div>
+
+<!-- a reviewer selects text and comments on it, where the documents are being written -->
+{#if import.meta.env.DEV}
+	<Review />
+{/if}

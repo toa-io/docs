@@ -68,6 +68,11 @@
 		@apply border-border outline-ring/50;
 	}
 
+	/* an illustration hangs past the edge of the page */
+	html {
+		@apply overflow-x-clip;
+	}
+
 	body {
 		@apply bg-background text-foreground;
 	}
@@ -77,7 +82,7 @@
 	}
 
 	pre {
-		@apply overflow-x-auto rounded-md bg-muted px-4 py-2 text-muted-foreground;
+		@apply overflow-x-auto rounded-md bg-muted px-4 py-2 text-sm text-muted-foreground;
 	}
 
 	pre code {
@@ -131,7 +136,7 @@
 		}
 	}
 	h2 {
-		@apply text-xl font-bold;
+		@apply pt-4 text-2xl font-bold tracking-tight;
 	}
 	h3 {
 		@apply text-lg font-bold;
@@ -147,13 +152,13 @@
 	}
 
 	/* the text column is narrower than the page: headings hang out of it to the left */
-	article > :not(h1, h2, h3, h4, h5, h6, hgroup, a, .intro),
-	.intro > :not(h1, h2, h3, h4, h5, h6, hgroup) {
+	article > :not(h1, h2, h3, h4, h5, h6, hgroup, a, .intro, .illustrated),
+	.intro > :not(h1, h2, h3, h4, h5, h6, hgroup, .illustrated) {
 		@apply mx-auto max-w-3xl;
 	}
 
 	blockquote {
-		@apply border-l-2 pl-4 italic;
+		@apply space-y-4 border-l-2 pl-4 italic;
 	}
 
 	ol.footnotes {
@@ -210,4 +215,22 @@ pre[class*='language-'] code {
 .token.function,
 .token.class-name {
 	color: var(--code-function);
+}
+
+mark.review-mark {
+	@apply cursor-pointer rounded-[0.15em] bg-sky-200/70 text-inherit dark:bg-sky-500/30;
+}
+
+mark.review-mark.pending {
+	@apply bg-yellow-200/70 dark:bg-yellow-500/25;
+}
+
+/* a picture drawn for the dark scheme has a background of its own: its edges melt into the page's */
+@media (prefers-color-scheme: dark) {
+	img.melting {
+		mask-image:
+			linear-gradient(to right, transparent, black 12%, black 88%, transparent),
+			linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+		mask-composite: intersect;
+	}
 }

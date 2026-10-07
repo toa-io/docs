@@ -31,13 +31,13 @@ const anchor = (route: string, slug: string) => slugs[route]?.[slug] ?? slug;
 /**
  * Rehype plugin, expects the headings to have ids (`rehype-slug`):
  *
- * - rewrites relative links between documentation files (`../basics/1.calls.md#local-calls`)
- *   to site routes (`/model/basics/calls/#local`)
+ * - rewrites relative links between documentation files (`../basics/1.calls.md#local-calls`,
+ *   `../../model/basics/1.calls.md`) to site routes (`/model/basics/calls/#local`)
  * - gives the headings below the first level their laconic anchors, and finds their subtitles
  */
 export function links({ root }: { root: string }) {
 	return (tree: Node, file: { filename?: string }) => {
-		const filename = file.filename ?? path.join(root, '0.intro.md');
+		const filename = file.filename ?? path.join(root, 'model', '0.intro.md');
 		const dir = path.dirname(filename);
 		const current = route(path.relative(root, filename));
 
@@ -102,15 +102,14 @@ function emphasis(node: Node) {
 	return text.value;
 }
 
-// `basics/1.calls.md` → `/model/basics/calls/`, `0.intro.md` → `/model/`
+// `model/basics/1.calls.md` → `/model/basics/calls/`, `model/0.intro.md` → `/model/`
 function route(file: string) {
-	if (file === '0.intro.md') return '/model/';
-
 	const segments = file
 		.split(path.sep)
+		.filter((segment) => segment !== '0.intro.md')
 		.map((segment) => segment.replace(/^\d+\./, '').replace(/\.md$/, ''));
 
-	return `/model/${segments.join('/')}/`;
+	return `/${segments.join('/')}/`;
 }
 
 // calls `fn` with each node and the element that follows it

@@ -11,6 +11,16 @@ export const anchors: Record<string, Record<string, string>> = {
 		'Chapter VII. Running': 'running'
 	},
 
+	'/userspace/': {
+		'Chapter I. First Steps': 'start',
+		'Chapter II. Business Logic': 'logic',
+		'Chapter III. The API': 'api',
+		'Chapter IV. Users and Access': 'access',
+		'Chapter V. Platform Features': 'platform',
+		'Chapter VI. Shipping': 'shipping',
+		'Chapter VII. Patterns': 'patterns'
+	},
+
 	'/model/foundations/separation/': {
 		'The problem': 'problem',
 		'Operations and declarations': 'declarations'
@@ -21,7 +31,7 @@ export const anchors: Record<string, Record<string, string>> = {
 		'Monolith and microservices become configurations': 'configurations',
 		'One composition: monolithic deployment': 'monolith',
 		'One composition per component: microservice deployment': 'microservices',
-		'Mixed compositions: fit the workload': 'mixed',
+		'Mixed compositions: macroservice deployment': 'mixed',
 		'The Context: application and environment': 'context',
 		'Location-transparent calls': 'calls',
 		'Integration through events': 'events',
@@ -65,6 +75,11 @@ export const anchors: Record<string, Record<string, string>> = {
 	},
 	'/model/basics/operations/': {
 		Types: 'types',
+		Transition: 'transition',
+		Creation: 'creation',
+		'Optimistic concurrency control': 'occ',
+		'Pessimistic concurrency control': 'pcc',
+		'Deciding not to commit': 'discard',
 		Computation: 'computation',
 		Effect: 'effect',
 		Scope: 'scope',
@@ -73,11 +88,10 @@ export const anchors: Record<string, Record<string, string>> = {
 		'Leaving the model': 'unmanaged'
 	},
 	'/model/basics/state/': {
-		'Identity and creation': 'identity',
-		Validity: 'validity',
-		'Versions and concurrency': 'versions',
+		'The schema': 'schema',
+		'System properties': 'system',
 		Guards: 'guards',
-		'Deciding not to commit': 'discard',
+		'Associated entities': 'associated',
 		Deletion: 'deletion'
 	},
 	'/model/basics/events/': {
@@ -113,7 +127,7 @@ export const anchors: Record<string, Record<string, string>> = {
 		'What it requires': 'requirements',
 		'More than events': 'beyond'
 	},
-	'/model/reliability/idempotency/': {
+	'/model/reliability/inbox/': {
 		'The identity of a call': 'identity',
 		'What once gives': 'once',
 		'What it does not give': 'limits',
@@ -145,11 +159,16 @@ export const anchors: Record<string, Record<string, string>> = {
 		Pulse: 'pulse',
 		'Spreading a cycle': 'spreading',
 		'What a pulse promises': 'pulse-guarantees',
-		'Work that belongs to a process': 'process',
+		'In one replica, or in every one': 'replica',
+		Schedule: 'schedule',
+		'What a schedule promises': 'schedule-guarantees',
+		'In one region, or in every one': 'regions',
 		Delay: 'delay',
 		'How late is too late': 'lateness',
+		'How precise a delay is': 'discreteness',
 		'What a delay promises': 'delay-guarantees',
-		'Time and chains': 'chains'
+		'Time and chains': 'chains',
+		'What it rests on': 'atomicity'
 	},
 	'/model/flow/collections/': {
 		'Reading without holding': 'reading',

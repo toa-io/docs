@@ -34,24 +34,32 @@
 				{/snippet}
 			</Item.Root>
 
-			<Item.Root variant="outline" aria-disabled="true" class="opacity-50">
-				<Item.Media variant="icon"><BookText /></Item.Media>
-				<Item.Content>
-					<Item.Title>Userspace</Item.Title>
-					<Item.Description>Building applications</Item.Description>
-				</Item.Content>
-				<Item.Actions class="ml-2"><ChevronRight class="size-4" /></Item.Actions>
+			<Item.Root variant="outline">
+				{#snippet child({ props })}
+					<a
+						href="/userspace/"
+						{...props}
+						class={[props.class, 'no-underline hover:text-foreground']}
+					>
+						<Item.Media variant="icon"><BookText /></Item.Media>
+						<Item.Content>
+							<Item.Title>Userspace</Item.Title>
+							<Item.Description>Building applications</Item.Description>
+						</Item.Content>
+						<Item.Actions class="ml-2"><ChevronRight class="size-4" /></Item.Actions>
+					</a>
+				{/snippet}
 			</Item.Root>
 		</div>
 	</nav>
 </main>
 
-<Footer.Center>
-	<a href="https://creativecommons.org/licenses/by/4.0/" class="text-xs">CC BY 4.0</a>
-</Footer.Center>
-
-<Footer.End>
+<Footer.Start>
 	<a href="https://github.com/toa-io/toa" aria-label="Toa on GitHub" class="text-muted-foreground">
 		<GitHub />
 	</a>
+</Footer.Start>
+
+<Footer.End>
+	<a href="https://creativecommons.org/licenses/by/4.0/" class="text-xs">CC BY 4.0</a>
 </Footer.End>
