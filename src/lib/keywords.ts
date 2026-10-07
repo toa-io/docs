@@ -69,15 +69,15 @@ export const keywords: Record<string, string> = {
 		'Toa, userspace, building applications, guide, components, operations, API, testing, deployment, patterns',
 
 	'/userspace/start/application/':
-		'project, layout, package.json, @toa.io/runtime, context.toa.yaml, registry, amqp, mongodb, stash, storages, authorities, docker-compose, rabbitmq, redis, template',
+		'toa create, npx, Node.js, Docker, PM2, npm install, npm run dock, npm run env, npm start, sys, app, gateway, hello, notes, npm run restart, npm stop, pm2 logs, context.toa.yaml, ecosystem.config.js, docker-compose',
 	'/userspace/start/component/':
-		'component, manifest.toa.yaml, entity, blank, namespace, observe, enumerate, assign, terminate, transit, forward, transition, concurrency, query, errors, toa export manifest',
+		'component, manifest.toa.yaml, entity, blank, namespace, transit, forward, transition, concurrency, query, errors, toa export manifest, toa call, CodedError, RequestContractException, State',
 	'/userspace/start/running/':
-		'toa env, --dev, toa map, toa compose, toa call, .env, .map.json, composition, request, input, query, RemoteError, RequestContractException, --kill',
+		'operation, computation, TypeScript, npm run restart, toa call, npx toa, manifest.toa.yaml, input, output, entity, blank, observe, enumerate, transit, assign, terminate, forward, query, criteria, toa types, toa env, toa map, .env, .map.json, RequestContractException',
 	'/userspace/start/api/':
-		'exposition, gateway, route, io:output, anonymous, toa mono, port 8000, curl, accept, content-type, 422, 400, 401, 404, trailing slash',
+		'exposition, gateway, route, io:output, anonymous, sys, port 8000, curl, accept, content-type, 422, 400, 401, 404, trailing slash',
 	'/userspace/start/testing/':
-		'test, cucumber, gherkin, feature, scenario, stage, @toa.io/userland, @toa.io/agent, compose, serve, remote, invoke, shutdown, captures, ${{ }}, #{{ }}, responseIncludes, pipeline',
+		'test, cucumber, gherkin, feature, scenario, stage, @toa.io/userland, @toa.io/agent, compose, remote, invoke, shutdown, npm run sys, pm2 stop app, captures, ${{ }}, #{{ }}, responseIncludes, pipeline',
 	'/userspace/start/configuration/':
 		'configuration, schema, defaults, context.configuration, limit, @environment, @local, toa env, staging, secret, LIMIT_EXCEEDED',
 
@@ -245,6 +245,8 @@ export const keywords: Record<string, string> = {
 		'error, refusal, exception, guard, schema, DISCARD, 422, 400, 403, 404, 500, validation, invariant, receiver, task',
 	'/userspace/patterns/ownership/':
 		'ownership, owner, copy, mirror, read model, eventual consistency, snapshot, associated, blank, counter, limit, quota, voucher, OBSOLETE',
+	'/userspace/patterns/associated/':
+		'associated, blank, entity, customer id, wallet, loyalty, accounts, sign-up, no creation, VERSION 0, StateNotFoundException, auth:id, namespace',
 	'/userspace/patterns/processes/':
 		'saga, process, steps, status, compensation, refund, rollback, orchestration, choreography, report back, forward, cancelled, workflow',
 	'/userspace/patterns/reservations/':
