@@ -3,8 +3,7 @@ name: toa
 description: >-
   How to build an application on Toa, the runtime for distributed systems: components, state,
   operations, events, tasks, the HTTP API, identities and access, tests, configuration and
-  deployment. Use when writing, changing, testing or reviewing code of an application that has a
-  `context.toa.yaml` or `manifest.toa.yaml`, or when asked how to do something with Toa.
+  deployment. Use when working on an application built with Toa.
 ---
 
 # Building Applications on Toa
