@@ -30,7 +30,7 @@ npx skills update            # get a newer version
 
 That command clones this repository, so the skill is committed, unlike the pages. It is
 generated, never edited: the pre-commit hook writes it (`npm run skill`) and adds it to the
-commit, and `npm run lint`, which runs on every pull request, fails while it is stale.
+commit, and `npm run lint` fails while it is stale.
 
 ## Search
 
