@@ -1,3 +1,6 @@
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
+
 interface Node {
 	type?: string;
 	tagName?: string;
@@ -62,8 +65,10 @@ async function html(node: Node) {
 
 const known = new Map<string, Promise<string | undefined>>();
 
-// Cloudinary tells the size of an upload; of a picture kept elsewhere nothing is known
+// Cloudinary tells the size of an upload, and a drawing kept with the site states its own; of a
+// picture kept elsewhere nothing is known
 function ratio(src: string) {
+	if (src.startsWith('/') && src.endsWith('.svg')) return drawn(src);
 	if (!src.includes('res.cloudinary.com') || !src.includes(UPLOAD)) return undefined;
 	if (!known.has(src)) known.set(src, measure(src));
 
@@ -81,3 +86,17 @@ async function measure(src: string) {
 		return undefined;
 	}
 }
+
+// what the `viewBox` of an SVG in `static` says
+async function drawn(src: string) {
+	try {
+		const svg = await readFile(path.join('static', src), 'utf8');
+		const [, , , width, height] = VIEWBOX.exec(svg) ?? [];
+
+		return width === undefined ? undefined : `${width} / ${height}`;
+	} catch {
+		return undefined;
+	}
+}
+
+const VIEWBOX = /viewBox="([\d.]+) ([\d.]+) ([\d.]+) ([\d.]+)"/;
