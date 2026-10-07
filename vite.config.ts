@@ -7,6 +7,7 @@ import { defineConfig } from 'vite';
 import slug from 'rehype-slug';
 import { links } from './src/lib/links.ts';
 import { images } from './src/lib/images.ts';
+import { index } from './src/lib/search/index/plugin.ts';
 
 // the documents the pages are rendered from
 const content = path.resolve('content');
@@ -17,6 +18,7 @@ export default defineConfig({
 	server: { fs: { allow: [content] } },
 	plugins: [
 		tailwindcss(),
+		index({ root: content }),
 		sveltekit({
 			compilerOptions: {
 				// Force runes mode for the project, except for libraries. Can be removed in svelte 6.
@@ -26,7 +28,7 @@ export default defineConfig({
 						? undefined
 						: true
 			},
-			// The search asks an index that is at Cloudflare only, and a dev server that reaches it
+			// The search asks a model that is at Cloudflare only, and a dev server that reaches it
 			// does not start without credentials: it does with `REMOTE=true`, see README
 			adapter: adapter({ platformProxy: { remoteBindings: process.env.REMOTE === 'true' } }),
 			preprocess: [

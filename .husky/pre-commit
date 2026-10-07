@@ -1,2 +1,4 @@
 npm run skill
 git add skills
+npm run vectors
+git add src/lib/search/index/vectors
