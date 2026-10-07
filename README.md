@@ -37,16 +37,14 @@ commit, and `npm run lint` fails while it is stale.
 `⌘K`, `Ctrl+K` or `/` opens the search; `/search/?q=…` is the same search as a page, and as JSON
 for a request that accepts `application/json`.
 
-It asks `toa-docs`, a [Cloudflare AI Search](https://developers.cloudflare.com/ai-search/)
-instance that crawls `https://toa.io` by its `sitemap.xml` and is bound to the worker as `SEARCH`
-in `wrangler.jsonc`. The instance was created once:
+A query is embedded by Workers AI, bound to the worker as `AI`, and compared in the worker with
+every passage of the documentation: by meaning, and by the words of the query a passage holds.
 
-```sh
-npx wrangler ai-search create toa-docs --type web-crawler --source toa.io \
-  --hybrid-search --reranking --cache
-```
+The passages and their vectors are the index, built with the site (`src/lib/search/index`). A
+vector takes a model to compute, so the vectors are committed, a file for an article in
+`src/lib/search/index/vectors`: the pre-commit hook computes those of the passages that changed
+(`npm run vectors`) and adds them to the commit. The first run downloads the model. A build
+computes what a commit left out, so the index is never stale, only slower to build.
 
-`npm run deploy` asks it to crawl the site again, and it does so by itself every six hours.
-
-The index is at Cloudflare only, so on a dev server the search answers that it is unavailable.
-With the credentials of the account, `REMOTE=true npm run dev` asks the deployed index.
+The model is at Cloudflare only, so on a dev server the search answers that it is unavailable.
+With the credentials of the account, `REMOTE=true npm run dev` embeds queries with it.

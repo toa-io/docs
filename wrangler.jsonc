@@ -8,8 +8,6 @@
 		"binding": "ASSETS",
 		"directory": ".svelte-kit/cloudflare"
 	},
-	// the index of the documentation the search asks, see README
-	"ai_search": [{ "binding": "SEARCH", "instance_name": "toa-docs" }],
 	// the model that embeds a query
 	"ai": { "binding": "AI" },
 	// searches of one address, a minute

@@ -13,12 +13,14 @@
 		"lint": "prettier --check . && eslint . && node scripts/skill.ts --check",
 		"format": "prettier --write .",
 		"host": "pm2 start ecosystem.config.cjs",
-		"deploy": "vite build && wrangler deploy && wrangler ai-search jobs create toa-docs",
+		"deploy": "vite build && wrangler deploy",
 		"bump": "npx -y npm-check-updates --target minor -u",
-		"skill": "node scripts/skill.ts"
+		"skill": "node scripts/skill.ts",
+		"vectors": "node scripts/vectors.ts"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
+		"@huggingface/transformers": "^4.3.1",
 		"@internationalized/date": "^3.12.4",
 		"@sveltejs/adapter-cloudflare": "^8.0.0",
 		"@sveltejs/kit": "^3.0.0",

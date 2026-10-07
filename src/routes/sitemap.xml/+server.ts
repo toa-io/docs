@@ -5,7 +5,7 @@ const ORIGIN = 'https://toa.io';
 
 export const prerender = true;
 
-// What is worth finding: the search of the site is an index of these pages, see README.
+// What is worth finding.
 // The pages of chapters are left out: nothing links to them, and they say nothing of their own.
 export const GET: RequestHandler = () => {
 	const paths = ['/', ...Object.keys(sections), ...articles.map((article) => article.href)];
