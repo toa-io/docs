@@ -96,7 +96,7 @@
 
 			if (range !== null && quote !== '' && rect !== undefined && el !== null) {
 				if (editing !== null) persist();
-				const id = crypto.randomUUID();
+				const id = identifier();
 				const selected = range.toString();
 				const { prefix, suffix } = context(range, el);
 				wrapRange(range, id, true);
@@ -115,6 +115,12 @@
 			}
 		});
 	};
+
+	// `crypto.randomUUID` is there in a secure context only, which a dev server on the network is not
+	const identifier = () =>
+		Array.from(crypto.getRandomValues(new Uint8Array(16)), (byte) =>
+			byte.toString(16).padStart(2, '0')
+		).join('');
 
 	const openExisting = (id: string, rect: DOMRect) => {
 		const comment = comments.find((c) => c.id === id);
