@@ -85,7 +85,9 @@ export const anchors: Record<string, Record<string, string>> = {
 		Scope: 'scope',
 		Safety: 'safety',
 		'Genuine operations': 'genuine',
-		'Leaving the model': 'unmanaged'
+		'Leaving the model': 'exceptions',
+		Unmanaged: 'unmanaged',
+		Stateful: 'stateful'
 	},
 	'/model/basics/state/': {
 		'The schema': 'schema',
