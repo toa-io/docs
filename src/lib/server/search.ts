@@ -1,3 +1,4 @@
+import { env } from 'cloudflare:workers';
 import { error } from '@sveltejs/kit';
 import { articles, sections } from '#lib/server/contents.ts';
 
@@ -17,28 +18,12 @@ const found = new Map(articles.map((article) => [article.href, article]));
  * The index holds passages of the pages the site is crawled into, see README: a passage is
  * known by the address of its page, and an article is as good as its best passage.
  */
-export async function search(
-	platform: App.Platform | undefined,
-	query: string,
-	address: string
-): Promise<SearchResult[]> {
-	const env = platform?.env;
-
-	// where the index is not bound: a dev server without the credentials of Cloudflare
-	if (env?.SEARCH === undefined)
-		error(
-			503,
-			`Search is unavailable: ${env === undefined ? 'no env' : Object.keys(env).join(' ')}`
-		);
-
+export async function search(query: string, address: string): Promise<SearchResult[]> {
 	const { success } = await env.SEARCH_LIMIT.limit({ key: address });
 
 	if (!success) error(429, 'Too many searches');
 
-	const { chunks } = await env.SEARCH.search({
-		query,
-		ai_search_options: { retrieval: { retrieval_type: 'hybrid', max_num_results: PASSAGES } }
-	});
+	const chunks = await passages(query);
 
 	const words = query.toLowerCase().split(/\s+/).filter(Boolean);
 	const results = new Map<string, SearchResult>();
@@ -66,6 +51,21 @@ export async function search(
 	}
 
 	return [...results.values()].sort((a, b) => b.score - a.score).slice(0, LIMIT);
+}
+
+async function passages(query: string) {
+	try {
+		const { chunks } = await env.SEARCH.search({
+			query,
+			ai_search_options: { retrieval: { retrieval_type: 'hybrid', max_num_results: PASSAGES } }
+		});
+
+		return chunks;
+	} catch (cause) {
+		// the index is at Cloudflare only: a dev server does not reach it without credentials
+		console.error(cause);
+		error(503, 'Search is unavailable');
+	}
 }
 
 // `https://toa.io/model/basics/calls` → `/model/basics/calls/`

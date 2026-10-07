@@ -5,10 +5,10 @@ import type { PageServerLoad } from './$types';
 // what is found depends on the query
 export const prerender = false;
 
-export const load: PageServerLoad = async ({ url, platform, getClientAddress, setHeaders }) => {
+export const load: PageServerLoad = async ({ url, getClientAddress, setHeaders }) => {
 	const q = query(url);
 
 	setHeaders(headers);
 
-	return { query: q, results: q.length < MIN ? [] : await search(platform, q, getClientAddress()) };
+	return { query: q, results: q.length < MIN ? [] : await search(q, getClientAddress()) };
 };
