@@ -8,8 +8,11 @@ declare module 'cloudflare:workers' {
 				ai_search_options?: {
 					retrieval?: {
 						retrieval_type?: 'vector' | 'keyword' | 'hybrid';
+						keyword_match_mode?: 'and' | 'or';
+						match_threshold?: number;
 						max_num_results?: number;
 					};
+					reranking?: { enabled?: boolean; match_threshold?: number };
 				};
 			}): Promise<{
 				// `key` is the address of the page a passage is of

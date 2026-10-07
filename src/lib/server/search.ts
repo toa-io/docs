@@ -10,6 +10,9 @@ const LIMIT = 8;
 const TITLE = 0.25;
 const EXCERPT = 320;
 
+// how alike a passage is to the query at least, 0 to 1
+const THRESHOLD = 0.2;
+
 const found = new Map(articles.map((article) => [article.href, article]));
 
 /**
@@ -57,7 +60,16 @@ async function passages(query: string) {
 	try {
 		const { chunks } = await env.SEARCH.search({
 			query,
-			ai_search_options: { retrieval: { retrieval_type: 'hybrid', max_num_results: PASSAGES } }
+			ai_search_options: {
+				retrieval: {
+					retrieval_type: 'hybrid',
+					// a question in the reader's words shares few words with its answer
+					keyword_match_mode: 'or',
+					match_threshold: THRESHOLD,
+					max_num_results: PASSAGES
+				},
+				reranking: { enabled: true, match_threshold: THRESHOLD }
+			}
 		});
 
 		return chunks;
@@ -75,12 +87,18 @@ function pathname(key: string) {
 	return path.endsWith('/') ? path : `${path}/`;
 }
 
-// a passage is Markdown: what is left of it is its text and its code
+// A passage is Markdown of a crawled page: what is left of it is its text and its code. The first
+// passage of a page opens with what the crawler read from its head, the link to its chapter and
+// its title, which the result shows by itself.
 function excerpt(markdown: string) {
 	const text = markdown
+		.replace(/^\s*---\n[^]*?\n---\n/, '')
+		.replace(/^\s*\[[^\]]*\]\([^)]*\)\s*$/gm, '')
+		.replace(/^# .*$/gm, '')
 		.replace(/```\w*/g, '')
 		.replace(/!?\[([^\]]*)\]\([^)]*\)/g, '$1')
 		.replace(/^\s*(?:#{1,6}|>|[-*+]|\d+\.)\s+/gm, '')
+		.replace(/§/g, '')
 		.replace(/(\*\*|__|\*|_)(?=\S)(.+?)(?<=\S)\1/g, '$2')
 		.replace(/\s+/g, ' ')
 		.trim();
