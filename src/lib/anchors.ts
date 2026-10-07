@@ -152,7 +152,8 @@ export const anchors: Record<string, Record<string, string>> = {
 	},
 	'/model/reliability/chains/': {
 		Cycles: 'cycles',
-		'Chains that may only read': 'read-only',
+		'Readonly chains': 'read-only',
+		'Reading methods of the gateway': 'gateway',
 		'What a chain is not': 'limits',
 		'The common idea': 'idea'
 	},
