@@ -6,6 +6,7 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 import slug from 'rehype-slug';
 import { links } from './src/lib/links.ts';
+import { images } from './src/lib/images.ts';
 
 // the documents the pages are rendered from
 const content = path.resolve('content');
@@ -30,7 +31,7 @@ export default defineConfig({
 				mdsvex({
 					extensions: ['.svx', '.md'],
 					layout: path.resolve('src/lib/markdown/Layout.svelte'),
-					rehypePlugins: [slug, [links, { root: content }]]
+					rehypePlugins: [slug, [links, { root: content }], images]
 				})
 			],
 			extensions: ['.svelte', '.svx', '.md']

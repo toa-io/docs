@@ -7,6 +7,7 @@
 		default as h5,
 		default as h6
 	} from './Heading.svelte';
+	export { default as img } from './Image.svelte';
 </script>
 
 <script lang="ts">

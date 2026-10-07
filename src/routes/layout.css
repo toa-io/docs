@@ -219,3 +219,13 @@ mark.review-mark {
 mark.review-mark.pending {
 	@apply bg-yellow-200/70 dark:bg-yellow-500/25;
 }
+
+/* a picture drawn for the dark scheme has a background of its own: its edges melt into the page's */
+@media (prefers-color-scheme: dark) {
+	img.melting {
+		mask-image:
+			linear-gradient(to right, transparent, black 12%, black 88%, transparent),
+			linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+		mask-composite: intersect;
+	}
+}
