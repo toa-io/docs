@@ -35,7 +35,8 @@ export const keywords: Record<string, string> = {
 	'/model/reliability/continuity/': 'continuity, resumable effects, steps, recovery',
 	'/model/reliability/chains/': 'call chains, call path, cycle detection, read-only chains',
 
-	'/model/flow/cadence/': 'cadence, scheduling, pulses, delayed calls',
+	'/model/flow/cadence/':
+		'cadence, scheduling, pulse, schedule, cron, time zone, delay, delayed calls, overdue, discreteness, regions, atomicity',
 	'/model/flow/collections/':
 		'collection streams, large collections, change streams, incremental reading',
 	'/model/flow/streams/': 'streamed calls, streaming replies, streaming input',

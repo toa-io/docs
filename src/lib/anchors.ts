@@ -159,11 +159,16 @@ export const anchors: Record<string, Record<string, string>> = {
 		Pulse: 'pulse',
 		'Spreading a cycle': 'spreading',
 		'What a pulse promises': 'pulse-guarantees',
-		'Work that belongs to a process': 'process',
+		'In one replica, or in every one': 'replica',
+		Schedule: 'schedule',
+		'What a schedule promises': 'schedule-guarantees',
+		'In one region, or in every one': 'regions',
 		Delay: 'delay',
 		'How late is too late': 'lateness',
+		'How precise a delay is': 'discreteness',
 		'What a delay promises': 'delay-guarantees',
-		'Time and chains': 'chains'
+		'Time and chains': 'chains',
+		'What it rests on': 'atomicity'
 	},
 	'/model/flow/collections/': {
 		'Reading without holding': 'reading',

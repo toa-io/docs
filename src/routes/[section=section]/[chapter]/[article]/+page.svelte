@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { ArrowUp } from '@lucide/svelte';
+	import SectionIcon from '#lib/SectionIcon.svelte';
 	import * as Footer from '#lib/footer/index.ts';
 	import type { PageProps } from './$types';
 
@@ -27,18 +27,31 @@
 
 <Footer.Start>
 	{#if previous}
-		<a href={previous.href} class="no-underline">← {previous.title}</a>
+		<!-- a narrow screen has no room for the titles: the arrows stay -->
+		<a
+			href={previous.href}
+			class="-m-3 p-3 text-base no-underline sm:m-0 sm:p-0 sm:text-sm"
+			aria-label={previous.title}
+		>
+			←<span class="hidden sm:inline">&nbsp;{previous.title}</span>
+		</a>
 	{/if}
 </Footer.Start>
 
 <Footer.Center>
 	<a href={`/${page.params.section}/`} aria-label="Contents"
-		><ArrowUp class="size-4 text-muted-foreground" /></a
+		><SectionIcon section={page.params.section} class="size-4 text-muted-foreground" /></a
 	>
 </Footer.Center>
 
 <Footer.End>
 	{#if next}
-		<a href={next.href} class="no-underline">{next.title} →</a>
+		<a
+			href={next.href}
+			class="-m-3 p-3 text-base no-underline sm:m-0 sm:p-0 sm:text-sm"
+			aria-label={next.title}
+		>
+			<span class="hidden sm:inline">{next.title}&nbsp;</span>→
+		</a>
 	{/if}
 </Footer.End>

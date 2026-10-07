@@ -136,7 +136,7 @@
 		}
 	}
 	h2 {
-		@apply text-xl font-bold;
+		@apply pt-4 text-2xl font-bold tracking-tight;
 	}
 	h3 {
 		@apply text-lg font-bold;

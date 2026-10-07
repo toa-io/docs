@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { ArrowUp } from '@lucide/svelte';
+	import SectionIcon from '#lib/SectionIcon.svelte';
 	import * as Footer from '#lib/footer/index.ts';
 	import type { PageProps } from './$types';
 
@@ -29,5 +29,7 @@
 {/if}
 
 <Footer.Center>
-	<a href={section.href} aria-label="Contents"><ArrowUp class="size-4 text-muted-foreground" /></a>
+	<a href={section.href} aria-label="Contents"
+		><SectionIcon section={page.params.section} class="size-4 text-muted-foreground" /></a
+	>
 </Footer.Center>
