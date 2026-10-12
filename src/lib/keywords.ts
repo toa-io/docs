@@ -264,5 +264,7 @@ export const keywords: Record<string, string> = {
 	'/userspace/patterns/wallet/':
 		'wallet, balance, ledger, double spend, once, concurrency, guard, trailers, VERSION, unique index, entity, minor units, refund, audit',
 	'/userspace/patterns/payments/':
-		'payment, checkout, top-up, redirect url, webhook, confirmation, reconciliation, pulse, exactly once, idempotent, realtime, receipt, refund'
+		'payment, checkout, top-up, redirect url, webhook, confirmation, reconciliation, pulse, exactly once, idempotent, realtime, receipt, refund',
+	'/userspace/patterns/lists/':
+		'list, infinite scroll, feed, notifications, inbox, collection stream, token, stop, limit, realtime, sync, VERSION, CREATED, live updates, polling, client copy'
 };
