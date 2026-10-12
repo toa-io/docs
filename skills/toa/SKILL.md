@@ -404,10 +404,11 @@ same application — a small shop with orders and customer accounts.
    every notification and announcing it; one record per provider object under a derived id; why
    `once` is not enough; refusing so the provider sends again.
 15. **[Mirroring a Provider's Object](patterns/15.mirrors.md)**
-   — summary: a provider's webhook as a signal to read the object from the provider; an
-   associated mirror merged by a retried transition; signalling from the webhook, the customer's
-   return and the shop's own change; announcing only what changed; a copy that refuses older
-   reads; expiry as a date.
+   — summary: a server-side copy of an object an outside service keeps, such as a subscription
+   at a payment provider; when that service says the object changed, asking it for the object
+   instead of trusting what it said; an associated mirror merged by a retried transition;
+   signalling from the webhook, the customer's return and the shop's own change; announcing only
+   what changed; a copy that refuses older reads; expiry as a date.
 16. **[A Wallet and Its Ledger](patterns/16.wallet.md)**
    — summary: a stored balance in an associated entity; `credit` as a `once` transition and
    `debit` keyed by what it is for, both with `concurrency: retry`; a guard; trailers that say
