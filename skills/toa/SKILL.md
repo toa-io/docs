@@ -175,8 +175,9 @@ same application — a small shop with orders and customer accounts.
 13. **[Push Changes to the Browser](api/13.realtime.md)**
    — summary: routing events to keys; serving the stream of a key; an identity's own stream;
    literal keys; reading a stream and reconnecting with a token; rules for the client; a copy
-   of a collection loaded with a stream and kept by events, its token read to scroll on or after
-   a gap, never for an event; redis and expiry.
+   of a collection loaded with a stream and kept by events, never read for one: a list scrolled
+   a window at a time, or the newest entries and what changed since the last launch; redis and
+   expiry.
 14. **[Call the API as Procedures](api/14.procedures.md)**
    — summary: turning json-rpc on; how a route names a procedure; parameters and results; batches
    and notifications; errors; the rules shared with http.
