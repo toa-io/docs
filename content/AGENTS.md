@@ -91,7 +91,7 @@ is "part of the shop".
 | `notifications` | Sends mail: `send` takes `{ to, text }`; `receipt` and `notify` are added in `logic/8.receivers.md`. | `logic/11.external.md` |
 | `loyalty` | Points for approved orders, tiers (`bronze`, `silver`, `gold`), and a customer's perks. | `logic/8.receivers.md` |
 | `pictures` | Product pictures. | `api/11.files.md` |
-| `terminals`, `assistant`, `pages`, `audit`, `tools`, `documents`, `store.quotes` | One article each. | where they appear |
+| `terminals`, `assistant`, `pages`, `audit`, `tools`, `documents`, `inbox`, `store.quotes` | One article each. | where they appear |
 
 What every article agrees on:
 
