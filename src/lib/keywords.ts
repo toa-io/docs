@@ -208,7 +208,7 @@ export const keywords: Record<string, string> = {
 	'/userspace/platform/own-extensions/':
 		'own extension, Factory, aspect, context.aspects, Connector, deployment, manifest, tenant, service, resident, pause, definition.js',
 	'/userspace/platform/chronicles/':
-		'chronicles, analytics, log, ClickHouse, context.chronicles, events, states, ingest, sendBeacon, MCP, views, system:chronicles',
+		'chronicles, analytics, log, ClickHouse, context.chronicles, events, states, encounters, visitor, session, sendBeacon, MCP, views, system:chronicles',
 
 	'/userspace/shipping/context/':
 		'context, context.toa.yaml, name, version, registry, runtime, amqp, mongodb, annotations, addresses, events, atomicity, outbox, inbox',
