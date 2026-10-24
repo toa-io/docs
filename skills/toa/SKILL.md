@@ -247,7 +247,7 @@ same application — a small shop with orders and customer accounts.
 
 ## Chapter V. Platform Features
 
-*Features the platform brings and a component switches on: settings, a cache, coordination, telemetry, a map of itself.*
+*Features the platform brings and a component switches on: settings, a cache, coordination, telemetry, a map of itself, a log to query.*
 
 1. **[Turn On a Platform Feature](platform/1.extensions.md)**
    — summary: declaring an extension in the manifest; setting it up in the context; values per
@@ -294,6 +294,11 @@ same application — a small shop with orders and customer accounts.
    — summary: an aspect of your own; declaring and calling it; annotations and deployment
    variables; validating declarations; tenants, services and residents; pausing; a storage of
    your own.
+14. **[Keep a Log of What Happens and Query It](platform/14.chronicles.md)**
+   — summary: the store and its provider; the `chronicles` annotation and service; logging a
+   component's changes by its events; keeping personal data out; `context.chronicles.send`;
+   events from the storefront; the `events` and `states` tables; the dialect; tools for an
+   agent and their roles; views.
 
 ## Chapter VI. Shipping
 
