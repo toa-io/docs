@@ -295,10 +295,10 @@ same application — a small shop with orders and customer accounts.
    variables; validating declarations; tenants, services and residents; pausing; a storage of
    your own.
 14. **[Keep a Log of What Happens and Query It](platform/14.chronicles.md)**
-   — summary: ClickHouse beside the broker; the `chronicles` annotation and service; logging a
+   — summary: the store and its provider; the `chronicles` annotation and service; logging a
    component's changes by its events; keeping personal data out; `context.chronicles.send`;
-   events from the storefront; the `events` and `states` tables; tools for an agent and their
-   roles; views; what ClickHouse refused.
+   events from the storefront; the `events` and `states` tables; the dialect; tools for an
+   agent and their roles; views.
 
 ## Chapter VI. Shipping
 
